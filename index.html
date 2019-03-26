@@ -6,13 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Jstydi</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        .batton {
+            width: 100px;
+            height: 30px;
+            background-color: rgb(186, 18, 219);
+        }
+    </style>
 </head>
 <body>
     <div><p>Hello GitHab Jstydi</p></div>
+    <div class="content">
+        <input class="N-1" type="text">
+        <div class="inpText"></div>
+        <div class="batton"></div>
+    </div>
+    
     <script>
     console.log('Hello GitHab Jstydi');
-        var url = "https://script.google.com/macros/s/AKfycbzhfFlERekRFbNfAz3tseaQaIMjn8nogAKgqL4g693AdgrccDo/exec";
-    $.get(url, { p1: "Hello", p2: "GitHab", p3: "Jstydi" });
+    var url = "https://script.google.com/macros/s/AKfycbzhfFlERekRFbNfAz3tseaQaIMjn8nogAKgqL4g693AdgrccDo/exec";
+    $('input.N-1').on('input', function () {
+        var inp = $(this).val();
+        $(".inpText").text(inp);
+        });
+    $('.batton').click(function(){
+        var text = $('.inpText').text();
+    $.get(url, { p1: "Hello", p2: text, p3: "test" });
+        console.log(text)
+    });
         
     $.getJSON(url, function(data){
       console.log(data.result[0]);
