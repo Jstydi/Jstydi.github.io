@@ -4,6 +4,7 @@
     "lang": "ru-RU",
     "start_url": "/?utm_source=a2hs",
     "display": "standalone",
+    "scope": "/",
     "theme_color": "#E6E6FA",
     "background_color": "#E6E6FA",
 
