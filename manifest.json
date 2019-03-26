@@ -2,7 +2,7 @@
     "name": "Jstydi",
     "short_name": "Jstydi",
     "lang": "ru-RU",
-    "start_url": "/",
+    "start_url": "/?utm_source=a2hs",
     "display": "standalone",
     "theme_color": "#E6E6FA",
     "background_color": "#E6E6FA",
