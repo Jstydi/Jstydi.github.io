@@ -76,17 +76,14 @@
             });
           });
         }
-        
-        
+     // ------------------------ Instal app ------------------------ //
     var installPromptEvent;
     var btnInstall = document.querySelector('#install');
-
     window.addEventListener('beforeinstallprompt', function (event) {
     event.preventDefault();
     installPromptEvent = event;
     btnInstall.removeAttribute('disabled');
     });
-
     btnInstall.addEventListener('click', function () {
     btnInstall.setAttribute('disabled', '');
     installPromptEvent.prompt();
