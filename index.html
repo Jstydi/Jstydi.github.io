@@ -77,7 +77,8 @@
         e.preventDefault();
         deferredPrompt = e;
         btnAdd.style.display = 'block';
-           btnAdd.addEventListener('click', (e) => {
+        });
+        btnAdd.addEventListener('click', (e) => {
   // hide our user interface that shows our A2HS button
   btnAdd.style.display = 'none';
   // Show the prompt
@@ -93,7 +94,6 @@
       deferredPrompt = null;
     });
 });
-        });
     </script>
 </body>
 </html>
