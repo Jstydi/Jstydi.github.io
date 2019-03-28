@@ -112,6 +112,11 @@ var notification = new Notification(title, options);
 function clickFunc() { alert('Пользователь кликнул на уведомление'); }
 
 notification.onclick = clickFunc;
+    sendNotification('Верните Линуса!', {
+body: 'Тестирование HTML5 Notifications',
+icon: 'icon.jpg',
+dir: 'auto'
+});
 }
 
 // Если прав нет, пытаемся их получить
@@ -120,11 +125,7 @@ Notification.requestPermission(function (permission) {
 // Если права успешно получены, отправляем уведомление
 if (permission === "granted") {
 var notification = new Notification(title, options);
-sendNotification('Верните Линуса!', {
-body: 'Тестирование HTML5 Notifications',
-icon: 'icon.jpg',
-dir: 'auto'
-});
+
 } else {
 alert('Вы запретили показывать уведомления'); // Юзер отклонил наш запрос на показ уведомлений
 }
