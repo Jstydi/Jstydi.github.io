@@ -99,12 +99,12 @@
         
     // ------------------------------------------ //
         if (!('serviceWorker' in navigator)) { 
-        // Браузер не поддерживает сервис-воркеры. 
+        console.log("es"); 
         return; 
         }
 
         if (!('PushManager' in window)) { 
-        // Браузер не поддерживает push-уведомления.
+        console.log("no")
         return; 
         }
     </script>
