@@ -96,6 +96,17 @@
         installPromptEvent = null;
     });
     });
+        
+    // ------------------------------------------ //
+        if (!('serviceWorker' in navigator)) { 
+        // Браузер не поддерживает сервис-воркеры. 
+        return; 
+        }
+
+        if (!('PushManager' in window)) { 
+        // Браузер не поддерживает push-уведомления.
+        return; 
+        }
     </script>
 </body>
 </html>
