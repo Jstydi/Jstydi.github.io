@@ -5,7 +5,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches
             .open(CACHE)
-            .then((cache) => cache.addAll(["/img/icons/ms-icon-70x70.png"]))
+            .then((cache) => cache.addAll(["/icons/ms-icon-70x70.png"]))
     );
 });
 
