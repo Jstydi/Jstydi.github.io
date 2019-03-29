@@ -6,4 +6,6 @@ toolbox.router.get('/images/*', toolbox.cacheFirst);
 toolbox.router.get('/*', toolbox.networkFirst, {
 networkTimeoutSeconds: 5
 });
-
+setInterval(function() { 
+            console.log("test");
+        }, 1000);
