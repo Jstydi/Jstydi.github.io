@@ -5,7 +5,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches
             .open(CACHE)
-            .then((cache) => cache.addAll(['index.html']))
+            .then((cache) => cache.addAll(['index.html','/images/*','/*']))
     );
 });
 
