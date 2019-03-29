@@ -1,4 +1,5 @@
 'use strict';
+
 setInterval(function() { 
 importScripts('sw-toolbox.js');
 toolbox.precache(["index.html"]);
