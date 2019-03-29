@@ -1,12 +1,12 @@
 'use strict';
 
-importScripts('sw-toolbox.js'); 
+importScripts('sw-toolbox.js');
+setInterval(function() { 
 toolbox.precache(["index.html"]);
 toolbox.router.get('/images/*', toolbox.cacheFirst);
 toolbox.router.get('/*', toolbox.networkFirst, {
 networkTimeoutSeconds: 5
 });
-setInterval(function() { 
     fetch("https://script.google.com/macros/s/AKfycbzhfFlERekRFbNfAz3tseaQaIMjn8nogAKgqL4g693AdgrccDo/exec?p1='Test sw'&p2='sw'")
     .then(  
     function(response) {  
