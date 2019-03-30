@@ -51,15 +51,5 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event) {
     // активация
     console.log('activate', event);
-    event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.filter(function(cacheName) {
-          }).map(function(cacheName){
-            console.log(cacheName)
-            return //caches.delete(cacheName);
-      })
-     );
-   })
-  );
+    console.log(cacheName);
 });
