@@ -51,6 +51,7 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event) {
     // активация
     console.log('Запуск функции активации', event);
+    console.log('Ключи', caches.keys())
 });
 
 self.addEventListener('fetch', function(event) {
