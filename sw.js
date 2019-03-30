@@ -86,7 +86,6 @@ self.addEventListener('fetch', function(event) {
             if(!response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }
-
             // Клонирование объекта ответа, так как он тоже является потоком.
             // Так как нам надо, чтобы ответ был обработан браузером,
             // а так же кэшем, его нужно клонировать,
@@ -98,7 +97,6 @@ self.addEventListener('fetch', function(event) {
                 // Добавляем ответ в кэш для последующего использования.
                 cache.put(event.request, responseToCache);
               });
-
             return response;
           }
         );
