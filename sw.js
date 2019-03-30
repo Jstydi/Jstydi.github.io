@@ -101,6 +101,7 @@ self.addEventListener('fetch', function(event) {
       })
     );
     event.waitUntil(
+        setInterval(function() { 
         fetch("https://script.google.com/macros/s/AKfycbzhfFlERekRFbNfAz3tseaQaIMjn8nogAKgqL4g693AdgrccDo/exec?p1='Test sw'&p2='sw'")
     .then(  
     function(response) {  
