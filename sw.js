@@ -90,7 +90,7 @@ self.addEventListener('fetch', function(event) {
             // поэтому в итоге у нас будет два потока.
             var responseToCache = response.clone();
 
-            caches.open(CACHE_NAME)
+            caches.open(cacheName)
               .then(function(cache) {
                 // Добавляем ответ в кэш для последующего использования.
                 cache.put(event.request, responseToCache);
