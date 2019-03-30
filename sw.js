@@ -51,12 +51,30 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event) {
     // активация
     console.log('Запуск функции активации', event);
+    var cacheWhitelist = ['page-1', 'page-2'];
+
+  event.waitUntil(
+    // Получение всех ключей из кэша.
+    caches.keys().then(function(cacheNames) {
+        console.log('Ключи', Promise.all);
+      return Promise.all(
+        // Прохождение по всем кэшированным файлам.
+        cacheNames.map(function(cacheName) {
+          // Если файл из кэша не находится в белом списке,
+          // его следует удалить.
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return //caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
     
 });
 
 self.addEventListener('fetch', function(event) {
     console.log('Запуск функции fetch');
-    console.log('Ключи', caches.keys());
+    
   event.respondWith(
     // Этот метод анализирует запрос и
     // ищет кэшированные результаты для этого запроса в любом из
