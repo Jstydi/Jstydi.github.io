@@ -43,12 +43,14 @@ self.addEventListener('install', function(event) {
         caches.open(cacheName).then(function(cache) {
             // загружаем в наш cache необходимые файлы
             return cache.addAll(cacheUrls);
-        })
+       })
     );
+    event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener('activate', function(event) {
     // активация
+    event.waitUntil(self.clients.claim());
     console.log('Запуск функции активации', event);
 });
 
