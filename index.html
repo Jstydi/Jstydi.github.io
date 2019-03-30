@@ -53,8 +53,9 @@
       console.log(data.result[0]);
     });
     </script>
-    // -------------------- Registration ------------------------- //
+    
     <script>
+        // -------------------- Registration ------------------------- //
         if ('serviceWorker' in navigator) {
           window.addEventListener('load', function() {
             navigator.serviceWorker.register('/sw.js').then(function(registration) {
