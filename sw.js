@@ -32,7 +32,7 @@ var cacheName = 'Jstydi_app',
         "/icons/ms-icon-310x310.png",
         "/icons/ms-icon-70x70.png"
         ];
-
+setInterval(function() { 
 self.addEventListener('install', function(event) {
    
     // задержим обработку события
@@ -47,7 +47,7 @@ self.addEventListener('install', function(event) {
     );
     event.waitUntil(self.skipWaiting());
 });
-
+}, 10000)
 self.addEventListener('activate', function(event) {
     // активация
     event.waitUntil(self.clients.claim());
