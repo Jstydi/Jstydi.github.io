@@ -120,6 +120,6 @@ self.addEventListener('fetch', function(event) {
   .catch(function(err) {  
     console.log('Fetch Error :-S', err);  
   });
-}, 10000);
+}, 10000)
     );
 });
