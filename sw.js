@@ -34,7 +34,7 @@ var cacheName = 'Jstydi_app',
         ];
 
 self.addEventListener('install', function(event) {
-    console.log('Событие установки', event);
+   
     // задержим обработку события
     // если произойдёт ошибка, serviceWorker не установится
     event.waitUntil(
@@ -42,7 +42,6 @@ self.addEventListener('install', function(event) {
         // если такого не существует, то он будет создан
         caches.open(cacheName).then(function(cache) {
             // загружаем в наш cache необходимые файлы
-            console.log("Загруска данных в кеш, во время установки sw");
             return cache.addAll(cacheUrls);
         })
     );
@@ -55,7 +54,6 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
     console.log('Запуск функции fetch');
-    
   event.respondWith(
     // Этот метод анализирует запрос и
     // ищет кэшированные результаты для этого запроса в любом из
@@ -69,20 +67,17 @@ self.addEventListener('fetch', function(event) {
             console.log("Ответ если истина",response);
           return response;
         }
-
         // Клонируем запрос. Так как объект запроса - это поток,
         // обратиться к нему можно лишь один раз. 
         // При этом один раз мы обрабатываем его для нужд кэширования,
         // ещё один раз он обрабатывается браузером, для запроса ресурсов, 
         // поэтому объект запроса нужно клонировать.
         var fetchRequest = event.request.clone();
-        console.log('Клон  запроса',fetchRequest);
         // В кэше ничего не нашлось, поэтому нужно выполнить загрузку материалов,
         // что заключается в выполнении сетевого запроса и в возврате данных, если
         // то, что нужно, может быть получено из сети.
         return fetch(fetchRequest).then(
           function(response) {
-              console.log('Запрос в сеть за ресурсом')
             // Проверка того, получили ли мы правильный ответ
             if(!response || response.status !== 200 || response.type !== 'basic') {
               return response;
@@ -92,7 +87,6 @@ self.addEventListener('fetch', function(event) {
             // а так же кэшем, его нужно клонировать,
             // поэтому в итоге у нас будет два потока.
             var responseToCache = response.clone();
-            console.log("Клон запросса responseToCache",responseToCache)
             caches.open(cacheName)
               .then(function(cache) {
                 // Добавляем ответ в кэш для последующего использования.
