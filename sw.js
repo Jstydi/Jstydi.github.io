@@ -42,6 +42,7 @@ self.addEventListener('install', function(event) {
         // если такого не существует, то он будет создан
         caches.open(CACHE_NAME).then(function(cache) {
             // загружаем в наш cache необходимые файлы
+            console.log('Opened cache');
             return cache.addAll(cacheUrls);
         })
     );
