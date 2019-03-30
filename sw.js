@@ -51,11 +51,12 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event) {
     // активация
     console.log('Запуск функции активации', event);
-    console.log('Ключи', caches.keys())
+    
 });
 
 self.addEventListener('fetch', function(event) {
     console.log('Запуск функции fetch');
+    console.log('Ключи', caches.keys());
   event.respondWith(
     // Этот метод анализирует запрос и
     // ищет кэшированные результаты для этого запроса в любом из
