@@ -1,5 +1,5 @@
 // наименование для нашего хранилища кэша
-var CACHE_NAME = 'Jstydi_app',
+var cacheName = 'Jstydi_app',
 // ссылки на кэшируемые файлы
     cacheUrls = [
         '/index.html',
@@ -40,7 +40,7 @@ self.addEventListener('install', function(event) {
     event.waitUntil(
         // находим в глобальном хранилище Cache-объект с нашим именем
         // если такого не существует, то он будет создан
-        caches.open(CACHE_NAME).then(function(cache) {
+        caches.open(cacheName).then(function(cache) {
             // загружаем в наш cache необходимые файлы
             console.log('Opened cache');
             return cache.addAll(cacheUrls);
@@ -51,4 +51,15 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event) {
     // активация
     console.log('activate', event);
+    event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
 });
