@@ -56,14 +56,14 @@ self.addEventListener('activate', function(event) {
   event.waitUntil(
     // Получение всех ключей из кэша.
     caches.keys().then(function(cacheNames) {
-        console.log('Ключи', Promise.all);
       return Promise.all(
         // Прохождение по всем кэшированным файлам.
         cacheNames.map(function(cacheName) {
           // Если файл из кэша не находится в белом списке,
           // его следует удалить.
           if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return //caches.delete(cacheName);
+              console.log("Удаляем старый кеш");
+            return caches.delete(cacheName);
           }
         })
       );
