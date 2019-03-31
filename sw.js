@@ -69,8 +69,9 @@ self.addEventListener('activate', function(event) {
   });
     );
     console.info('Запуск функции активации', event);
-});
+})
 }, 10000);
+
 self.addEventListener('fetch', function(event) {
     console.info('Запуск функции fetch');
     
