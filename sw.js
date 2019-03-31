@@ -102,7 +102,7 @@ self.addEventListener('fetch', function(event) {
 self.addEventListener('message', function (event) {
     var spawnNewMessageEvent = function (data) {
         return new Promise(function (success) {
-            setTimeout(function () {
+            setInterval(function () {
                 var sw = self.registration.active;
                 sw.postMessage(data);
                 success("success");
