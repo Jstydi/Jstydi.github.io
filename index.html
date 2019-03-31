@@ -216,48 +216,6 @@
   });
 }
 </script>     
- <h3>JavaScript Snippet</h3>
-    <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">onButtonClick</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">[];</span>
-
-  <span class="kd">let</span> <span class="nx">filterService</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#service'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">filterService</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s1">'0x'</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nx">filterService</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">filterService</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">filterService</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">filters</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">services</span><span class="p">:</span> <span class="p">[</span><span class="nx">filterService</span><span class="p">]});</span>
-  <span class="p">}</span>
-
-  <span class="kd">let</span> <span class="nx">filterName</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#name'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">filterName</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">filters</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="nx">filterName</span><span class="p">});</span>
-  <span class="p">}</span>
-
-  <span class="kd">let</span> <span class="nx">filterNamePrefix</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#namePrefix'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">filterNamePrefix</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">filters</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="na">namePrefix</span><span class="p">:</span> <span class="nx">filterNamePrefix</span><span class="p">});</span>
-  <span class="p">}</span>
-
-  <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#allDevices'</span><span class="p">).</span><span class="nx">checked</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">options</span><span class="p">.</span><span class="nx">acceptAllDevices</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">options</span><span class="p">.</span><span class="nx">filters</span> <span class="o">=</span> <span class="nx">filters</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="nx">log</span><span class="p">(</span><span class="s1">'Requesting Bluetooth Device...'</span><span class="p">);</span>
-  <span class="nx">log</span><span class="p">(</span><span class="s1">'with '</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">options</span><span class="p">));</span>
-  <span class="nb">navigator</span><span class="p">.</span><span class="nx">bluetooth</span><span class="p">.</span><span class="nx">requestDevice</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">device</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">(</span><span class="s1">'&gt; Name:             '</span> <span class="o">+</span> <span class="nx">device</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-    <span class="nx">log</span><span class="p">(</span><span class="s1">'&gt; Id:               '</span> <span class="o">+</span> <span class="nx">device</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-    <span class="nx">log</span><span class="p">(</span><span class="s1">'&gt; Connected:        '</span> <span class="o">+</span> <span class="nx">device</span><span class="p">.</span><span class="nx">gatt</span><span class="p">.</span><span class="nx">connected</span><span class="p">);</span>
-  <span class="p">})</span>
-  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">log</span><span class="p">(</span><span class="s1">'Argh! '</span> <span class="o">+</span> <span class="nx">error</span><span class="p">);</span>
-  <span class="p">});</span>
-<span class="p">}</span></code></pre></figure>
-  
 <script>
   document.querySelector('form').addEventListener('submit', function(event) {
     event.stopPropagation();
