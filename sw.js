@@ -66,7 +66,7 @@ self.addEventListener('activate', function(event) {
     )  
   .catch(function(err) {  
     console.log('Fetch Error :-S', err);  
-  });
+  })
     );
     console.info('Запуск функции активации', event);
 })
