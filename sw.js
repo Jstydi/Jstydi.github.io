@@ -47,7 +47,7 @@ self.addEventListener('install', function(event) {
 }); 
 self.addEventListener('activate', function(event) {
     // активация
-    event.waitUntil();
+    //event.waitUntil();
     console.info('Запуск функции активации', event);
 });
 
