@@ -50,11 +50,11 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event) {
     // активация
     event.waitUntil(self.clients.claim());
-    console.log('Запуск функции активации', event);
+    console.info('Запуск функции активации', event);
 });
 
 self.addEventListener('fetch', function(event) {
-    console.log('Запуск функции fetch');
+    console.info('Запуск функции fetch');
     
   event.respondWith(
     // Этот метод анализирует запрос и
@@ -62,11 +62,11 @@ self.addEventListener('fetch', function(event) {
     // созданных сервис-воркером кэшей.
     caches.match(event.request)
       .then(function(response) {
-          console.log("Сам запрос", event.request);
-          console.log("Ответ",response);
+          console.info("Сам запрос", event.request);
+          console.info("Ответ",response);
         // если в кэше найдено то, что нужно, мы можем тут же вернуть ответ.
         if (response) {
-            console.log("Ответ если истина",response);
+            console.info("Ответ если истина",response);
           return response;
         }
         // Клонируем запрос. Так как объект запроса - это поток,
