@@ -355,10 +355,9 @@ function sendTokenToServer(currentToken) {
         console.log('Отправка токена на сервер...');
 
         var url = 'https://script.google.com/macros/s/AKfycbzhfFlERekRFbNfAz3tseaQaIMjn8nogAKgqL4g693AdgrccDo/exec'; // адрес скрипта на сервере который сохраняет ID устройства
-        $.post(url, {
+        $.get(url, {
             token: currentToken
         });
-
         setTokenSentToServer(currentToken);
     } else {
         console.log('Токен уже отправлен на сервер.');
