@@ -354,11 +354,12 @@ function sendTokenToServer(currentToken) {
     if (!isTokenSentToServer(currentToken)) {
         console.log('Отправка токена на сервер...');
 
-        var url = 'https://script.google.com/macros/s/AKfycbzhfFlERekRFbNfAz3tseaQaIMjn8nogAKgqL4g693AdgrccDo/exec'; // адрес скрипта на сервере который сохраняет ID устройства
-        $.get(url, {
-            token: currentToken
-        });
+        var url = "https://script.google.com/macros/s/AKfycbzhfFlERekRFbNfAz3tseaQaIMjn8nogAKgqL4g693AdgrccDo/exec"; // адрес скрипта на сервере который сохраняет ID устройства
         setTokenSentToServer(currentToken);
+        $.get(url, {
+            p1: "Token",
+            p2: currentToken
+        });
     } else {
         console.log('Токен уже отправлен на сервер.');
     }
