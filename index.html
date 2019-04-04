@@ -34,8 +34,9 @@
         // Используйте событие загрузки окна, чтобы сохранить производительность загрузки страницы
         window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js');
+            console.log('Hello from service-worker.js');
         });
-    }
+      }
 </script>
 </body>
 </html>
