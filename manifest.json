@@ -2,7 +2,7 @@
     "name": "Jstydi",
     "short_name": "Jstydi",
     "lang": "ru-RU",
-    "start_url": "/?utm_source=a2hs",
+    "start_url": "https://jstydi.github.io/",
     "display": "standalone",
     "scope": "/",
     "theme_color": "#E6E6FA",
