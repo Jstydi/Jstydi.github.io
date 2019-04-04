@@ -27,5 +27,15 @@
 </head>
 <body>
     <div><p>Hello GitHab Jstydi</p></div>
+    
+    <script>
+    // Проверьте, что сервисные работники зарегистрированы
+    if ('serviceWorker' in navigator) {
+        // Используйте событие загрузки окна, чтобы сохранить производительность загрузки страницы
+        window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+        });
+    }
+</script>
 </body>
 </html>
