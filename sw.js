@@ -1,4 +1,4 @@
-console.log("Start SW")
+console.log("Старт service worker")
 // наименование для нашего хранилища кэша
 var cacheName = 'Jstydi_app',
 // ссылки на кэшируемые файлы
@@ -34,15 +34,25 @@ var cacheName = 'Jstydi_app',
         "/icons/ms-icon-70x70.png"
         ];
 self.addEventListener('install', function(event) {
-   
     // задержим обработку события
     // если произойдёт ошибка, serviceWorker не установится
     event.waitUntil(
         // находим в глобальном хранилище Cache-объект с нашим именем
         // если такого не существует, то он будет создан
         caches.open(cacheName).then(function(cache) {
+            console.log("Загрузка в кэш, ф-я instal");
             // загружаем в наш cache необходимые файлы
             return cache.addAll(cacheUrls);
        })
     );
 }); 
+
+self.addEventListener('activate', function(event) {
+    // активация
+    //event.waitUntil();
+    console.log('Запуск функции активации ', event);
+});
+
+self.addEventListener('fetch', function(event) {
+    console.log('Запуск функции fetch ', event);
+    )};
