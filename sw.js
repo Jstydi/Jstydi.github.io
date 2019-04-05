@@ -56,15 +56,4 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', event => {
   console.log('Запуск функции fetch ', event.request);
-  event.respondWith(    
-  caches.match(event.request)
-  .then(function(response) {
-      if (response) {
-          console.info("Ответ если истина",response);
-        return response;
-      }
-      return fetch(event.request)
-    }
-  )
-  );
 });
