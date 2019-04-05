@@ -51,9 +51,9 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event) {
     // активация
     //event.waitUntil();
-    console.log('Запуск функции активации ', event.request);
+    console.log('Запуск функции активации ', event);
 });
 
 self.addEventListener('fetch', function(event) {
-    console.log('Запуск функции fetch ', event);
+    console.log('Запуск функции fetch ', event.request);
 });
