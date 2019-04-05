@@ -37,6 +37,6 @@ workbox.routing.registerRoute(
         "/icons/ms-icon-144x144.png",
         "/icons/ms-icon-150x150.png",
         "/icons/ms-icon-310x310.png",
-        "/icons/ms-icon-70x70.png"
+        "/icons/ms-icon-70x70.png",
   handler
 );
