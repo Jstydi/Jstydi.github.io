@@ -58,8 +58,5 @@ self.addEventListener('fetch', function(event) {
     console.log('Запуск функции fetch ', event.request);
     event.respondWith(
             caches.match(event.request)
-            .then(function (response){
-            return response;
-            });
-     );
+           )
 });
