@@ -12,5 +12,4 @@ workbox.routing.registerRoute(
         '/index.html',
         '/style.css',
         '/manifest.json',
-        handler
 );
