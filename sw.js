@@ -54,6 +54,6 @@ self.addEventListener('activate', function(event) {
     console.log('Запуск функции активации ', event);
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', function(event) {
   console.log('Запуск функции fetch ', event.request);
 });
