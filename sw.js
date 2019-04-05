@@ -6,6 +6,7 @@ var cacheName = 'Jstydi_app',
         '/index.html',
         '/style.css',
         '/manifest.json',
+        '/main.js'
         "/icons/android-icon-144x144.png",
         "/icons/android-icon-192x192.png",
         "/icons/android-icon-36x36.png",
