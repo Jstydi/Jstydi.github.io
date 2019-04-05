@@ -54,15 +54,8 @@ self.addEventListener('activate', function(event) {
     console.log('Запуск функции активации ', event);
 });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', event => {
     console.log('Запуск функции fetch ', event.request);
-    event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-    })
-    )
+    event.respondWith(caches.match(event.request));
+      
 });
