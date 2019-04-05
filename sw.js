@@ -56,4 +56,10 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
     console.log('Запуск функции fetch ', event.request);
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
 });
