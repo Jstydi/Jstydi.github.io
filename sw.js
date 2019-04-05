@@ -1,5 +1,4 @@
 console.log("Старт service worker");
-importScripts('main.js');
 // наименование для нашего хранилища кэша
 var cacheName = 'Jstydi_app',
 // ссылки на кэшируемые файлы
