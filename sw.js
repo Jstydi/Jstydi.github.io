@@ -3,6 +3,7 @@ var cacheName = 'Jstydi_app',
 // ссылки на кэшируемые файлы
     cacheUrls = [
         '/index.html',
+        '/sw.js',
         '/style.css',
         '/manifest.json',
         "/icons/android-icon-144x144.png",
