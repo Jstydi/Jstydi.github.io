@@ -1,4 +1,3 @@
-console.log("Старт service worker");
 // наименование для нашего хранилища кэша
 var cacheName = 'Jstydi_app',
 // ссылки на кэшируемые файлы
@@ -34,25 +33,68 @@ var cacheName = 'Jstydi_app',
         "/icons/ms-icon-70x70.png"
         ];
 self.addEventListener('install', function(event) {
+   
     // задержим обработку события
     // если произойдёт ошибка, serviceWorker не установится
     event.waitUntil(
         // находим в глобальном хранилище Cache-объект с нашим именем
         // если такого не существует, то он будет создан
         caches.open(cacheName).then(function(cache) {
-            console.log("Загрузка в кэш, ф-я instal");
             // загружаем в наш cache необходимые файлы
             return cache.addAll(cacheUrls);
        })
     );
 }); 
-
 self.addEventListener('activate', function(event) {
     // активация
     //event.waitUntil();
-    console.log('Запуск функции активации ', event);
+    console.info('Запуск функции активации', event);
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('Запуск функции fetch ', event.request);
+    console.info('Запуск функции fetch');
+    
+  event.respondWith(
+    // Этот метод анализирует запрос и
+    // ищет кэшированные результаты для этого запроса в любом из
+    // созданных сервис-воркером кэшей.
+    caches.match(event.request)
+      .then(function(response) {
+          console.info("Сам запрос", event.request);
+          console.info("Ответ",response);
+        // если в кэше найдено то, что нужно, мы можем тут же вернуть ответ.
+        if (response) {
+            console.info("Ответ если истина",response);
+          return response;
+        }
+        // Клонируем запрос. Так как объект запроса - это поток,
+        // обратиться к нему можно лишь один раз. 
+        // При этом один раз мы обрабатываем его для нужд кэширования,
+        // ещё один раз он обрабатывается браузером, для запроса ресурсов, 
+        // поэтому объект запроса нужно клонировать.
+        var fetchRequest = event.request.clone();
+        // В кэше ничего не нашлось, поэтому нужно выполнить загрузку материалов,
+        // что заключается в выполнении сетевого запроса и в возврате данных, если
+        // то, что нужно, может быть получено из сети.
+        return fetch(fetchRequest).then(
+          function(response) {
+            // Проверка того, получили ли мы правильный ответ
+            if(!response || response.status !== 200 || response.type !== 'basic') {
+              return response;
+            }
+            // Клонирование объекта ответа, так как он тоже является потоком.
+            // Так как нам надо, чтобы ответ был обработан браузером,
+            // а так же кэшем, его нужно клонировать,
+            // поэтому в итоге у нас будет два потока.
+            var responseToCache = response.clone();
+            caches.open(cacheName)
+              .then(function(cache) {
+                // Добавляем ответ в кэш для последующего использования.
+                cache.put(event.request, responseToCache);
+              });
+            return response;
+          }
+        );
+      })
+    );
 });
