@@ -3,7 +3,8 @@ self.addEventListener('install', (event) => {
   event.waitUntil(async function() {
     const cache = await caches.open('Jstydi_app-v1');
     // ссылки на кэшируемые файлы
-    var cacheUrls = [
+    await cache.addAll(
+    [
         '/index.html',
         '/style.css',
         '/manifest.json',
@@ -33,8 +34,8 @@ self.addEventListener('install', (event) => {
         '/icons/ms-icon-150x150.png',
         '/icons/ms-icon-310x310.png',
         '/icons/ms-icon-70x70.png'
-        ];
-    await cache.addAll(cacheUrls);
+        ]
+    );
   }());
 });
 
