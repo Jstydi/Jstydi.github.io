@@ -43,31 +43,46 @@ self.addEventListener('activate', (event) => {
   console.log("Start activate");
 });
 
-async function update() {
-  // Start the network request as soon as possible.
-  const networkPromise = fetch('/data.json');
+// При запросе на сервер мы используем данные из кэша и только после идем на сервер.
+self.addEventListener('fetch', (event) => {
+    console.info('Start fetch ', event.request);
+    // Как и в предыдущем примере, сначала `respondWith()` потом `waitUntil()`
+    event.respondWith(fromCache(event.request));
+    event.waitUntil(
+      update(event.request)
+      // В конце, после получения "свежих" данных от сервера уведомляем всех клиентов.
+      .then(refresh)
+    );
+});
 
-  startSpinner();
-
-  const cachedResponse = await caches.match('/data.json');
-  if (cachedResponse) await displayUpdate(cachedResponse);
-
-  try {
-    const networkResponse = await networkPromise;
-    const cache = await caches.open('mysite-dynamic');
-    cache.put('/data.json', networkResponse.clone());
-    await displayUpdate(networkResponse);
-  } catch (err) {
-    // Maybe report a lack of connectivity to the user.
-  }
-
-  stopSpinner();
-
-  const networkResponse = await networkPromise;
-
+function fromCache(request) {
+    return caches.open(CACHE).then((cache) =>
+        cache.match(request).then((matching) =>
+            matching || Promise.reject('no-match')
+        ));
 }
 
-async function displayUpdate(response) {
-  const data = await response.json();
-  updatePage(data);
+function update(request) {
+    return caches.open(CACHE).then((cache) =>
+        fetch(request).then((response) =>
+            cache.put(request, response.clone()).then(() => response)
+        )
+    );
+}
+
+// Шлём сообщения об обновлении данных всем клиентам.
+function refresh(response) {
+    return self.clients.matchAll().then((clients) => {
+        clients.forEach((client) => {
+            // Подробнее про ETag можно прочитать тут
+            // https://en.wikipedia.org/wiki/HTTP_ETag
+            const message = {
+                type: 'refresh',
+                url: response.url,
+                eTag: response.headers.get('ETag')
+            };
+            // Уведомляем клиент об обновлении данных.
+            client.postMessage(JSON.stringify(message));
+        });
+    });
 }
