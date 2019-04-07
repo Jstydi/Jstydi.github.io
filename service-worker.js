@@ -1,6 +1,4 @@
 console.log('Start');
-// наименование для нашего хранилища кэша
-var cacheName = 'Jstydi_app',
 // ссылки на кэшируемые файлы
     cacheUrls = [
         '/index.html',
@@ -35,7 +33,7 @@ var cacheName = 'Jstydi_app',
         ];
 self.addEventListener('install', (event) => {
   event.waitUntil(async function() {
-    const cache = await caches.open('cacheName-v1');
+    const cache = await caches.open('Jstydi_app-v1');
     await cache.addAll(cacheUrls);
   }());
 });
