@@ -7,7 +7,6 @@ self.addEventListener('install', (event) => {
     await cache.addAll(
     [
         '/',
-        'https://jstydi.github.io/service-worker.js',
         '/index.html',
         '/manifest.json',
         '/service-worker.js',
