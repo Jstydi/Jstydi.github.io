@@ -1,6 +1,6 @@
 console.log('Start');
 // ссылки на кэшируемые файлы
-    cacheUrls = [
+  var cacheUrls = [
         '/index.html',
         '/style.css',
         '/manifest.json',
