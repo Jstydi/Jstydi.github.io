@@ -6,7 +6,6 @@ self.addEventListener('install', (event) => {
     await cache.addAll(
     [
         '/index.html',
-        '/style.css',
         '/manifest.json',
         '/icons/android-icon-144x144.png',
         '/icons/android-icon-192x192.png',
