@@ -6,6 +6,7 @@ self.addEventListener('install', (event) => {
     // ссылки на кэшируемые файлы
     await cache.addAll(
     [
+        '/',
         '/index.html',
         '/manifest.json',
         '/service-worker.js',
