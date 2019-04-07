@@ -7,6 +7,7 @@ self.addEventListener('install', (event) => {
     [
         '/index.html',
         '/manifest.json',
+        '/service-worker.js',
         '/icons/android-icon-144x144.png',
         '/icons/android-icon-192x192.png',
         '/icons/android-icon-36x36.png',
