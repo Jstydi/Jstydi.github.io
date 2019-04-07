@@ -1,7 +1,8 @@
 console.log('Start');
 self.addEventListener('install', (event) => {
   event.waitUntil(async function() {
-    const cache = await caches.open('Jstydi_app-v1');
+    const cacheName = 'Jstydi_app-v1';
+    const cache = await caches.open(cacheName);
     // ссылки на кэшируемые файлы
     await cache.addAll(
     [
@@ -56,14 +57,14 @@ self.addEventListener('fetch', (event) => {
 });
 
 function fromCache(request) {
-    return caches.open(CACHE).then((cache) =>
+    return caches.open(cacheName).then((cache) =>
         cache.match(request).then((matching) =>
             matching || Promise.reject('no-match')
         ));
 }
 
 function update(request) {
-    return caches.open(CACHE).then((cache) =>
+    return caches.open(cacheName).then((cache) =>
         fetch(request).then((response) =>
             cache.put(request, response.clone()).then(() => response)
         )
