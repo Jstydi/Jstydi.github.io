@@ -7,11 +7,11 @@ self.addEventListener('install', (event) => {
     await cache.addAll(
     [
         '/',
+        'https://jstydi.github.io/service-worker.js',
         '/index.html',
         '/manifest.json',
         '/service-worker.js',
         'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
-        'https://jstydi.github.io/service-worker.js',
         '/icons/android-icon-144x144.png',
         '/icons/android-icon-192x192.png',
         '/icons/android-icon-36x36.png',
