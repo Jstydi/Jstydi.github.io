@@ -43,13 +43,31 @@ self.addEventListener('activate', (event) => {
   console.log("Start activate");
 });
 
-self.addEventListener('fetch', (event) => {
- console.log("Start fetch ", event.request.url)
-  event.respondWith(async function() {
-    try {
-      return await fetch(event.request);
-    } catch (err) {
-      return caches.match(event.request);
-    }
-  }());
-});
+async function update() {
+  // Start the network request as soon as possible.
+  const networkPromise = fetch('/data.json');
+
+  startSpinner();
+
+  const cachedResponse = await caches.match('/data.json');
+  if (cachedResponse) await displayUpdate(cachedResponse);
+
+  try {
+    const networkResponse = await networkPromise;
+    const cache = await caches.open('mysite-dynamic');
+    cache.put('/data.json', networkResponse.clone());
+    await displayUpdate(networkResponse);
+  } catch (err) {
+    // Maybe report a lack of connectivity to the user.
+  }
+
+  stopSpinner();
+
+  const networkResponse = await networkPromise;
+
+}
+
+async function displayUpdate(response) {
+  const data = await response.json();
+  updatePage(data);
+}
