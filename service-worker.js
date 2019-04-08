@@ -49,5 +49,10 @@ self.addEventListener('activate', (event) => {
 // При запросе на сервер мы используем данные из кэша и только после идем на сервер.
 self.addEventListener('fetch', (event) => {
     console.info('Start fetch ', event.request);
-    event.respondWith(caches.match(event.request));
+    event.respondWith(
+      caches.match(event.request)
+      .catch(err){
+      console.log(err)
+      }
+    );
 });
