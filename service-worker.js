@@ -56,6 +56,5 @@ self.addEventListener('fetch', (event) => {
       }).catch(function(err){
       console.log(err)
       })
-      }
     );
 });
