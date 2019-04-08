@@ -51,7 +51,9 @@ self.addEventListener('fetch', (event) => {
     console.info('Start fetch ', event.request);
     event.respondWith(
       caches.match(event.request)
-      .catch(err){
+      .then(function(response){
+      return response
+      }).catch(err){
       console.log(err)
       }
     );
