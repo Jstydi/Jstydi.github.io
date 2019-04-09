@@ -60,7 +60,7 @@ self.addEventListener('fetch', (event) => {
     }());
 
     // Returned the cached response if we have one, otherwise return the network response.
-    console.log(cachedResponse.headers)
+    console.log(cachedResponse.status)
     return cachedResponse || networkResponsePromise;
   }());
 });
