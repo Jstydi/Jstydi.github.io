@@ -49,15 +49,13 @@ self.addEventListener('activate', (event) => {
 // При запросе на сервер мы используем данные из кэша и только после идем на сервер.
 self.addEventListener('fetch', (event) => {
     const url = 'https://jstydi.github.io'
-    console.info('Start fetch ', event.request);
-    event.respondWith(
-      caches.match(event.request)
-      
-      fetch(url)
+    fetch(url)
       .then(function(response){
       console.log(response.status);
       })
-      
+    console.info('Start fetch ', event.request);
+    event.respondWith(
+      caches.match(event.request)
       .then(function(response){
       return response
       }).catch(function(err){
