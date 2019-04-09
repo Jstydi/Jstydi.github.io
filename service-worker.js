@@ -48,13 +48,17 @@ self.addEventListener('activate', (event) => {
 
 // При запросе на сервер мы используем данные из кэша и только после идем на сервер.
 self.addEventListener('fetch', (event) => {
-    console.info('Start fetch ', event.request);
-    event.respondWith(
-      caches.match(event.request)
-      .then(function(response){
-      return response
-      }).catch(function(err){
-      console.log(err)
-      })
-    );
+  event.respondWith(async function() {
+    const cache = await caches.open(cacheName);
+    const cachedResponse = await cache.match(event.request);
+    const networkResponsePromise = fetch(event.request);
+
+    event.waitUntil(async function() {
+      const networkResponse = await networkResponsePromise;
+      await cache.put(event.request, networkResponse.clone());
+    }());
+
+    // Returned the cached response if we have one, otherwise return the network response.
+    return cachedResponse || networkResponsePromise;
+  }());
 });
