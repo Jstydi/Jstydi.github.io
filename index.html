@@ -48,8 +48,10 @@
     fetch(url)
       .then(function(response){
       console.log(response.status);
-        return
-      })
+        return;
+      }).catch(function(err) {  
+    console.log('Fetch Error :-S', err);  
+  });
 </script>
 </body>
 </html>
