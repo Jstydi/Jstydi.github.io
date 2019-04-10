@@ -47,7 +47,7 @@
         messageChannel.port1.onmessage = function(event) {
         console.log(event.data);
         };
-        
+        navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
 </script>
 </body>
 </html>
