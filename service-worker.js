@@ -54,3 +54,7 @@ self.addEventListener('fetch', (event) => {
                    )
 });
 
+self.addEventListener('message', function (evt) {
+  
+  evt.ports[0].postMessage({'hello': 'world'});
+})
