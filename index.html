@@ -43,7 +43,10 @@
           });
         }
         
-        
+        var messageChannel = new MessageChannel();
+        messageChannel.port1.onmessage = function(event) {
+        console.log(event.data);
+        };
         
 </script>
 </body>
