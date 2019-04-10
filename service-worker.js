@@ -55,6 +55,6 @@ self.addEventListener('fetch', (event) => {
 });
 
 self.addEventListener('message', function(event)
-  console.log(event)
+  console.log(event.ports)
   event.ports[0].postMessage({'test': 'This is my response.'});
 });
