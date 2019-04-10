@@ -54,9 +54,8 @@
     console.log('e.data', e.data);
 };
 
-        
+  if (navigator.serviceWorker.controller) {  
   function sendMessage(message) {
-  
   return new Promise(function(resolve, reject) {
   var messageChannel = new MessageChannel();
   messageChannel.port1.onmessage = function(event) {
@@ -71,6 +70,9 @@
 }
 sendMessage()
       .then(message => console.log(message))
+ } else {
+ console.log("Err registration serviceWorker")
+ }
 </script>
 </body>
 </html>
