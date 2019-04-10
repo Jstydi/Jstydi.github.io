@@ -50,7 +50,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   
   event.respondWith(
-                   //console.log('Start fetch ', event.request)
+                   console.log('Start fetch ', request)
                    caches.match(event.request)        
   );
  
