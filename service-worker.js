@@ -53,3 +53,7 @@ self.addEventListener('fetch', (event) => {
                     caches.match(event.request)
                    )
 });
+
+self.addEventListener('message', function (evt) {
+  console.log('postMessage received', evt.data);
+})
