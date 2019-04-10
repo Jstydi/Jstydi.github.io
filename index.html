@@ -45,9 +45,9 @@
         
         
         
-        function sendMessage(message) {
+    function sendMessage(message) {
   
-  return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve, reject) {
     var messageChannel = new MessageChannel();
     messageChannel.port1.onmessage = function(event) {
       if (event.data.error) {
@@ -62,7 +62,7 @@
 }
 
 sendMessage()
-        .then(resolve => console.log(resolve))
+        .then(message => console.log(message))
 </script>
 </body>
 </html>
