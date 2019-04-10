@@ -65,6 +65,5 @@ self.clients.matchAll().then( (clients) => {
   }
 
 self.addEventListener('message', function(event)
-  console.log(event.ports)
   event.ports[0].postMessage({'test': 'This is my response.'});
 });
