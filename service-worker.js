@@ -55,5 +55,7 @@ self.addEventListener('fetch', (event) => {
 });
 
 self.addEventListener('message', function(event) {
+  setInterval(function() {
   event.ports[0].postMessage({'test': 'This is my response.'});
+  }, 10000)
 });
