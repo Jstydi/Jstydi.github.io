@@ -31,6 +31,12 @@
     <div><p>Hello GitHab Jstydi 2</p></div>
     
     <script>
+    if (navigator.serviceWorker.controller) {
+    console.log("Страница контролируется serviceWorker")
+    } else {
+    console.log("Страница не контролируется serviceWorker")
+    }
+        
     if ('serviceWorker' in navigator) {
           window.addEventListener('load', function() {
             navigator.serviceWorker.register('/service-worker.js', {scope:'/'}).then(function(registration) {
