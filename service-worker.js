@@ -59,3 +59,4 @@ self.clients.matchAll(options).then( (clients) => {
         const client = clients[0];
         client.postMessage("your message");
     }
+  });
