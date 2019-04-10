@@ -1,7 +1,8 @@
 console.log('Start');
-const cacheName = 'Jstydi_app-v1';
 self.addEventListener('install', (event) => {
+  console.log('Start install ', event)
   event.waitUntil(async function() {
+    const cacheName = 'Jstydi_app-v1';
     const cache = await caches.open(cacheName);
     // ссылки на кэшируемые файлы
     await cache.addAll(
@@ -42,7 +43,7 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
-  console.log("Start activate");
+  console.log("Start activate", event);
 });
 
 // При запросе на сервер мы используем данные из кэша и только после идем на сервер.
