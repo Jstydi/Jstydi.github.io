@@ -54,7 +54,6 @@ self.addEventListener('fetch', (event) => {
                    )
 });
 
-self.addEventListener('message', function (evt) {
-  
-  evt.ports[0].postMessage({'hello': 'world'});
-})
+self.addEventListener('message', function handler (event) {
+  event.ports[0].postMessage(data);
+});
