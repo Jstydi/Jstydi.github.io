@@ -54,7 +54,7 @@ self.addEventListener('fetch', (event) => {
                    )
 });
 
-self.clients.matchAll(options).then( (clients) => {
+self.clients.matchAll().then( (clients) => {
     if (clients && clients.length) {
         const client = clients[0];
         client.postMessage("your message");
