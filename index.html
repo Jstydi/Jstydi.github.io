@@ -57,7 +57,6 @@
       if (event.data.error) {
         reject(event.data.error);
       } else {
-          console.log(event.data)
         resolve(event.data);
       }
     };
@@ -71,6 +70,9 @@
     // https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage
     navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
   });
+}
+sendMessage(message){
+console.log(message);
 }
 </script>
 </body>
