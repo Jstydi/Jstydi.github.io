@@ -48,14 +48,23 @@ self.addEventListener('activate', (event) => {
 
 // При запросе на сервер мы используем данные из кэша и только после идем на сервер.
 self.addEventListener('fetch', (event) => {
-  self.clients.matchAll().then( (clients) => {
+  Message();
+  console.log('Start fetch ', event.request)
+  event.respondWith(
+                    caches.match(event.request)
+                   )
+});
+
+function Message() {
+self.clients.matchAll().then( (clients) => {
     if (clients && clients.length) {
         const client = clients[0];
         client.postMessage("your message");
     }
   });
-  console.log('Start fetch ', event.request)
-  event.respondWith(
-                    caches.match(event.request)
-                   )
+  }
+
+self.addEventListener('message', function(event)
+  console.log(event.ports)
+  event.ports[0].postMessage({'test': 'This is my response.'});
 });
