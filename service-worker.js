@@ -54,7 +54,8 @@ self.addEventListener('fetch', (event) => {
                    )
 });
 
-self.addEventListener('message', function(event)
-  console.log(event.ports)
-  event.ports[0].postMessage({'test': 'This is my response.'});
-});
+self.clients.matchAll(options).then( (clients) => {
+    if (clients && clients.length) {
+        const client = clients[0];
+        client.postMessage("your message");
+    }
