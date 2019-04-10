@@ -43,13 +43,7 @@
           });
         }
         
-        //navigator.serviceWorker.controller.postMessage({'hello': 'world'});
         
-        var messageChannel = new MessageChannel();
-            messageChannel.port1.onmessage = function(event) {
-            console.log(event.data);
-            navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
-        };
         
 </script>
 </body>
