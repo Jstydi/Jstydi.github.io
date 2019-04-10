@@ -68,12 +68,12 @@
     // handler on messageChannel.port1.
     // See
     // https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage
+     console.log(message);
     navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
+      console.log(message);
   });
 }
-var message = sendMessage()
-console.log(message);
-
+sendMessage()
 </script>
 </body>
 </html>
