@@ -56,4 +56,5 @@ self.addEventListener('fetch', (event) => {
 
 self.addEventListener('message', function (evt) {
   console.log('postMessage received', evt.data);
+  evt.ports[0].postMessage({'hello2': 'world2'});
 })
