@@ -71,9 +71,9 @@
     navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
   });
 }
-sendMessage(message){
+var message = sendMessage()
 console.log(message);
-}
+
 </script>
 </body>
 </html>
