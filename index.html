@@ -44,10 +44,11 @@
         }
         
         var messageChannel = new MessageChannel();
-        messageChannel.port1.onmessage = function(event) {
-        console.log(event.data);
-        };
-        navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
+messageChannel.port1.addEventListener('message', replyHandler);
+worker.postMessage(data, [messageChannel.port2]);
+function replyHandler (event) {
+  console.log(event.data);
+}
 </script>
 </body>
 </html>
