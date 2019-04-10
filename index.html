@@ -57,6 +57,7 @@
       if (event.data.error) {
         reject(event.data.error);
       } else {
+          console.log(event.data)
         resolve(event.data);
       }
     };
