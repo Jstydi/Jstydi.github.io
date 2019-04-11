@@ -85,9 +85,9 @@ console.log('Fetch Error :-S', err);
     }
   });
   }
-setInterval(function() { 
-Message();
-}, 20000)
+//setInterval(function() { 
+//Message();
+//}, 20000)
 
   self.addEventListener('message', function(event){
     event.ports[0].postMessage({'test': 'This is my response.'});
