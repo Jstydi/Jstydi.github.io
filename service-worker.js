@@ -87,7 +87,7 @@ console.log('Fetch Error :-S', err);
   }
 setInterval(function() { 
 Message();
-}, 5000)
+}, 20000)
 
   self.addEventListener('message', function(event){
     event.ports[0].postMessage({'test': 'This is my response.'});
