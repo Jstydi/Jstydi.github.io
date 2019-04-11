@@ -64,21 +64,7 @@ self.clients.matchAll().then( (clients) => {
   });
   }
 
-//self.addEventListener('message', function(event){
-//event.ports[0].postMessage({'test': 'This is my response.'});
-//});
+  self.addEventListener('message', function(event){
+    event.ports[0].postMessage({'test': 'This is my response.'});
+  });
 
-
-self.addEventListener('message', function (event) {
-    console.log("Long live")
-    var spawnNewMessageEvent = function (data) {
-        return new Promise(function (success) {
-            setTimeout(function () {
-                var sw = self.registration.active;
-                sw.postMessage(data);
-                success("success");
-            }, 30000)
-        });
-    };
-    event.waitUntil(doSomething().then(spawnNewMessageEvent));
-});
