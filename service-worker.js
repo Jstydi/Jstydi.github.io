@@ -48,7 +48,7 @@ self.addEventListener('activate', (event) => {
 
 // При запросе на сервер мы используем данные из кэша и только после идем на сервер.
 self.addEventListener('fetch', (event) => {
-  Message();
+  
   console.log('Start fetch ', event.request)
   event.respondWith(
                     caches.match(event.request)
@@ -85,6 +85,9 @@ console.log('Fetch Error :-S', err);
     }
   });
   }
+setInterval(function() { 
+Message();
+}, 5000)
 
   self.addEventListener('message', function(event){
     event.ports[0].postMessage({'test': 'This is my response.'});
