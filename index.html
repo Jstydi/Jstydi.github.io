@@ -33,9 +33,7 @@
     <script>
     if (navigator.serviceWorker.controller) {
     console.log("Страница контролируется serviceWorker")
-    } else {
-    console.log("Страница не контролируется serviceWorker")
-    }
+    
         
     if ('serviceWorker' in navigator) {
           window.addEventListener('load', function() {
@@ -48,7 +46,9 @@
             });
           });
         }
-        
+  } else {
+    console.log("Страница не контролируется serviceWorker")
+    } 
     navigator.serviceWorker.onmessage = function (e) {
     // messages from service worker.
     console.log('e.data', e.data);
