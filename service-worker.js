@@ -57,6 +57,27 @@ self.addEventListener('fetch', (event) => {
 
 function Message() {
 self.clients.matchAll().then( (clients) => {
+  
+  fetch("Jstydi.github.io/content.json")
+.then(  
+function(response) {  
+if (response.status !== 200) {  
+  console.log('Looks like there was a problem. Status Code: ' +  
+    response.status);  
+  return;  
+}
+
+// Examine the text in the response  
+response.json().then(function(data) {  
+  console.log(data);  
+});  
+}  
+)  
+.catch(function(err) {  
+console.log('Fetch Error :-S', err);  
+});
+  
+  
     if (clients && clients.length) {
         const client = clients[0];
         var mes = {test:'test'}
