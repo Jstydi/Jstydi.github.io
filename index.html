@@ -52,6 +52,7 @@
     navigator.serviceWorker.onmessage = function (e) {
     // messages from service worker.
     console.log('e.data', e.data);
+    console.log(e.data.test);
 };
 
   if (navigator.serviceWorker.controller) {  
