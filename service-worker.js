@@ -58,7 +58,7 @@ self.addEventListener('fetch', (event) => {
 function Message() {
 self.clients.matchAll().then( (clients) => {
   
-  fetch("Jstydi.github.io/content.json")
+  fetch("Jstydi.github.io/content.json",{cache: "no-store"})
 .then(  
 function(response) {  
 if (response.status !== 200) {  
