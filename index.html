@@ -23,57 +23,60 @@
     <meta name="theme-color" content="#E6E6FA">
     <link rel="manifest" href="/manifest.json">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <script src="main.js"></script> -->
-   <!-- <link rel="stylesheet" type="text/css" href="/style.css"> -->
 </head>
 <body>
     <div><p>Hello GitHab Jstydi</p></div>
     <div><p>Hello GitHab Jstydi 2</p></div>
     
     <script>
-    if (navigator.serviceWorker.controller) {
-    console.log("Страница контролируется serviceWorker")
-    
+
+    if (navigator.serviceWorker.controller) { // Проверка на контроль страницы serviceWorker-ом  
+        console.log("Страница контролируется serviceWorker");
         
-    if ('serviceWorker' in navigator) {
-          window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/service-worker.js', {scope:'/'}).then(function(registration) {
-              // Registration was successful
-              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        if ('serviceWorker' in navigator) { // Регестрация serviceWorker
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js', {scope:'/'}).then(function(registration) {
+                console.log('Регистрация serviceWorker, область видимости: ', registration.scope);
             }, function(err) {
-              // registration failed :(
-              console.log('ServiceWorker registration failed: ', err);
+              console.log('Ошибка регистрации serviceWorker: ', err);
             });
           });
         }
-  } else {
-    console.log("Страница не контролируется serviceWorker")
-    } 
-    navigator.serviceWorker.onmessage = function (e) {
-    // messages from service worker.
-    console.log('e.data', e.data);
-    console.log(e.data.test);
-};
-
-  if (navigator.serviceWorker.controller) {  
-  function sendMessage(message) {
-  return new Promise(function(resolve, reject) {
-  var messageChannel = new MessageChannel();
-  messageChannel.port1.onmessage = function(event) {
-    if (event.data.error) {
-      reject(event.data.error);
     } else {
-      resolve(event.data);
+    console.log("Страница не контролируется serviceWorker")
     }
-  };
-  navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
-});
-}
+
+// --------------------------------------------------- // Принимаем сообщение от serviceWorker вариант-1 (без запроса в sw)
+    navigator.serviceWorker.onmessage = function (e) {
+        let message = e.data;
+        console.log('Сообщение и данные из serviceWorker-а ', message);
+    };
+// --------------------------------------------------- //
+
+// -------------------------------------------------------------------------------- // 
+//Принимаем сообщение от serviceWorker вариант-2 (С запросом в sw)
+
+    if (navigator.serviceWorker.controller) {  
+        function sendMessage(message) {
+    return new Promise(function(resolve, reject) {
+           var messageChannel = new MessageChannel();
+        messageChannel.port1.onmessage = function(event) {
+            if (event.data.error) {
+                reject(event.data.error);
+            } else {
+                resolve(event.data);
+            }
+        };
+        navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
+        });
+    }
+
 sendMessage()
-      .then(message => console.log(message))
+      .then(message => console.log('Сообщение из sw в-2 ', message))
  } else {
- console.log("Err registration serviceWorker")
+ console.log("Ошибка регистрации sw")
  }
+// -------------------------------------------------------------------------------- //
 </script>
 </body>
 </html>
