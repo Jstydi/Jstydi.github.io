@@ -39,7 +39,12 @@
     if ('serviceWorker' in navigator) { // Регестрация serviceWorker
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/service-worker.js', {scope:'/'}).then(function(registration) {
-                        registration.addEventListener('updatefound', function() {
+                        registration.addEventListener('updatefound', function() { // Событие обновления sw
+                        void function () {
+                        var msg = new MessageChannel();
+                        navigator.serviceWorker.controller.postMessage("UPDATE", [msg.port2]);
+                        console.log('Message в sw об обновление на запуск функции skipWaiting');
+                        }();
                         var installingWorker = registration.installing;
                         console.log('ServiceWorker был обновлен ', installingWorker)
                         })
@@ -63,9 +68,9 @@
 
     if (navigator.serviceWorker.controller) {  
         function sendMessage(message) {
-    return new Promise(function(resolve, reject) {
-           var messageChannel = new MessageChannel();
-        messageChannel.port1.onmessage = function(event) {
+        return new Promise(function(resolve, reject) {
+        var messageChannel = new MessageChannel();
+            messageChannel.port1.onmessage = function(event) {
             if (event.data.error) {
                 reject(event.data.error);
             } else {
