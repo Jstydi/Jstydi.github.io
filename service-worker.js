@@ -53,16 +53,6 @@ self.addEventListener('activate', (event) => {
 // ---------------------------------------------------------- // Перехват запросов на сервер
 // При запросе на сервер мы используем данные из кэша
 self.addEventListener('fetch', (event) => {
-  var page1 = "https://jstydi.github.io/";
-  var page2 = "https://jstydi.github.io/index.html";
-  var page3 = "https://jstydi.github.io/service-worker.js";
-  if(event.request.url == page1){
-  console.log("Запрос на страницу https://jstydi.github.io/ ->", event.request.url)
-  } else if(event.request.url == page2){
-  console.log("Запрос на страницу https://jstydi.github.io/index.html ->", event.request.url)
-  } else if (event.request.url == page3){
-  console.log("Запрос на страницу https://jstydi.github.io/service-worker.js ->", event.request.url)
-  }
   console.log('Start fetch ', event.request.url)
   event.respondWith(
                     caches.match(event.request) // Все требуемые ресурсы бырутся из кэш
