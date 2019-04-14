@@ -95,7 +95,7 @@ function Message() { // В-1
   self.addEventListener('message', function(event){
     if(event.data == "UPDATE"){
       self.skipWaiting();
-      console.log("В сервис воркер сработал апдата " ,event.data)
+      console.log("В сервис воркер сработал updata " ,event.data)
     } else {
     event.ports[0].postMessage({'test': 'This is my response.'});
     }
