@@ -93,6 +93,10 @@ function Message() { // В-1
 
 // ----------------------------------------------------------- // Сообщение В-2
   self.addEventListener('message', function(event){
+    if(event.data == "UPDATE"){
+      console.log("В сервис воркер сработал апдата" ,event.data)
+    } else {
     event.ports[0].postMessage({'test': 'This is my response.'});
+    }
   });
 // ---------------------------------------------------------- //
