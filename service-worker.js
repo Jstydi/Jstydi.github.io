@@ -60,7 +60,7 @@ self.addEventListener('fetch', (event) => {
   } else if(event.request.url == page2){
   console.log("Запрос на страницу https://jstydi.github.io/index.html ->", event.request.url)
   }
-  console.log('Start fetch ', event.request)
+  console.log('Start fetch ', event.request.url)
   event.respondWith(
                     caches.match(event.request) // Все требуемые ресурсы бырутся из кэш
                    )
