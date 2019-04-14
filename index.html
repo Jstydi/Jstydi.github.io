@@ -32,9 +32,9 @@
 
     if (navigator.serviceWorker.controller) { // Проверка на контроль страницы serviceWorker-ом
         console.log("Страница контролируется serviceWorker");
-
     } else {
     console.log("Страница не контролируется serviceWorker");
+    }
 
     if ('serviceWorker' in navigator) { // Регестрация serviceWorker
             window.addEventListener('load', function() {
@@ -46,11 +46,11 @@
                 console.log('Регистрация serviceWorker, область видимости: ', registration.scope);
             }, function(err) {
                 console.log('Ошибка регистрации serviceWorker: ', err);
-            });
+            }
+            );
           });
         }
-    }
-
+    
 // --------------------------------------------------- // Принимаем сообщение от serviceWorker вариант-1 (без запроса в sw)
     navigator.serviceWorker.onmessage = function (e) {
         let message = e.data;
