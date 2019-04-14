@@ -1,4 +1,5 @@
 console.log('Start');
+// -------------------------------------------------- // Установка необходимых ресурсов в кэш
 self.addEventListener('install', (event) => {
   console.log('Start install ', event)
   event.waitUntil(async function() {
@@ -10,7 +11,7 @@ self.addEventListener('install', (event) => {
         '/',
         '/index.html',
         '/manifest.json',
-        'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
+        'https://code.jquery.com/jquery-3.4.0.min.js',
         '/icons/android-icon-144x144.png',
         '/icons/android-icon-192x192.png',
         '/icons/android-icon-36x36.png',
@@ -41,55 +42,58 @@ self.addEventListener('install', (event) => {
     );
   }());
 });
+// -------------------------------------------------- //
 
+// -------------------------------------------------- // Активация sw
 self.addEventListener('activate', (event) => {
   console.log("Start activate", event);
 });
+// -------------------------------------------------- //
 
-// При запросе на сервер мы используем данные из кэша и только после идем на сервер.
+// ---------------------------------------------------------- // Перехват запросов на сервер
+// При запросе на сервер мы используем данные из кэша
 self.addEventListener('fetch', (event) => {
   
   console.log('Start fetch ', event.request)
   event.respondWith(
-                    caches.match(event.request)
+                    caches.match(event.request) // Все требуемые ресурсы бырутся из кэш
                    )
 });
+// ---------------------------------------------------------- //
 
-function Message() {
-self.clients.matchAll().then( (clients) => {
-  
-  fetch("Jstydi.github.io/content.json",{cache: "no-store"})
-.then(  
-function(response) {  
-if (response.status !== 200) {  
-  console.log('Looks like there was a problem. Status Code: ' +  
-    response.status);  
-  return;  
-}
+// ---------------------------------------------------------- // Работа с сообщениями от sw к странице
+function Message() { // В-1
+    self.clients.matchAll().then( (clients) => {
 
-// Examine the text in the response  
-response.json().then(function(data) {  
-  console.log(data);  
-});  
-}  
-)  
-.catch(function(err) {  
-console.log('Fetch Error :-S', err);  
-});
-  
-  
-    if (clients && clients.length) {
+        // ________________________________________________________ \\
+        fetch("Jstydi.github.io/content.json",{cache: "no-store"}) // Запрос на сервер для получения новых данных
+            .then(function(response) {  
+                 if (response.status !== 200) {  // Проверка на ошибку статус не равен (200, ОК) 
+                 console.log('Похоже, возникла проблема. Код состояния: ' + response.status);  
+                 return;  
+                 }
+             response.json().then(function(data) {  // Данные из сервера 
+             console.log('Получены данные из сервера ', data);
+             });  
+            })
+              .catch(function(err) {  
+              console.log('Ошибка запроса :', err);  
+            });
+        // ________________________________________________________ \\
+
+     if (clients && clients.length) { // Отправляем сообщение на страницу
         const client = clients[0];
-        var mes = {test:'test'}
-        client.postMessage(mes);
-    }
+        var mes = {test:'test'};
+        client.postMessage(mes); // Отправляем сообщение на страницу 
+     }
   });
-  }
-//setInterval(function() { 
+}
+//setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
 //Message();
 //}, 20000)
 
+// ----------------------------------------------------------- // Сообщение В-2
   self.addEventListener('message', function(event){
     event.ports[0].postMessage({'test': 'This is my response.'});
   });
-
+// ---------------------------------------------------------- //
