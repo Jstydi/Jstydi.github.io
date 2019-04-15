@@ -99,6 +99,7 @@ setInterval(function() {  // Запуск функции на отправку �
     fetch("https://jstydi.github.io/service-worker.js",{method: "GET", cache: "no-cache"})
             .then(function(response) {  
                  console.log('Статус ответа : ' + response.status);
+                  console.log(response)
                  return;  
             }).catch(function(err) {  
               console.log('Ошибка запроса :', err);  
