@@ -75,7 +75,7 @@ function Message() { // В-1
                  return;  
                  }
              response.json().then(function(data) {  // Данные из сервера 
-             console.log('Получены данные из сервера ', data);
+             console.log('Получены данные из сервера : ', data);
              });  
             })
               .catch(function(err) {  
