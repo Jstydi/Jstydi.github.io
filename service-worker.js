@@ -94,6 +94,21 @@ function Message() { // В-1
 //Message();
 //}, 20000)
 
+setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
+
+    fetch("https://jstydi.github.io/service-worker.js",
+        {
+            method: "GET",
+            headers: "If-None-Match",
+        })
+            .then(function(response) {  
+                 console.log('Статус ответа : ' + response.status);  
+                 return;  
+            }).catch(function(err) {  
+              console.log('Ошибка запроса :', err);  
+            });
+        }, 20000)
+
 // ----------------------------------------------------------- // Сообщение В-2
   self.addEventListener('message', function(event){
     if(event.data == "UPDATE"){
