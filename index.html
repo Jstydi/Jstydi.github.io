@@ -39,6 +39,7 @@
     if ('serviceWorker' in navigator) { // Регестрация serviceWorker
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/service-worker.js', {scope:'/'}).then(function(registration) {
+                    setInterval(function() {
                         registration.addEventListener('updatefound', function() { // Событие обновления sw
                         if (navigator.serviceWorker.controller) { // Проверка на контроль страницы serviceWorker-ом
                         void function () {
@@ -50,6 +51,7 @@
                         var installingWorker = registration.installing;
                         console.log('ServiceWorker был обновлен ', installingWorker)
                         })
+                    }, 10000) // !!!
                 console.log('Регистрация serviceWorker, область видимости: ', registration.scope);
             }, function(err) {
                 console.log('Ошибка регистрации serviceWorker: ', err);
