@@ -3,8 +3,8 @@ console.log('Start');
 self.addEventListener('install', (event) => {
   console.log('Start install ', event)
   event.waitUntil(
-    self.skipWaiting();
     async function() {
+    self.skipWaiting();
     const cacheName = 'Jstydi_app-v1';
     const cache = await caches.open(cacheName);
     // ссылки на кэшируемые файлы
