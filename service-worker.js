@@ -2,7 +2,9 @@ console.log('Start');
 // -------------------------------------------------- // Установка необходимых ресурсов в кэш
 self.addEventListener('install', (event) => {
   console.log('Start install ', event)
-  event.waitUntil(async function() {
+  event.waitUntil(
+    self.skipWaiting();
+    async function() {
     const cacheName = 'Jstydi_app-v1';
     const cache = await caches.open(cacheName);
     // ссылки на кэшируемые файлы
@@ -46,6 +48,7 @@ self.addEventListener('install', (event) => {
 
 // -------------------------------------------------- // Активация sw
 self.addEventListener('activate', (event) => {
+  self.clients.claim();
   console.log("Start activate", event);
 });
 // -------------------------------------------------- //
