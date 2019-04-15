@@ -40,7 +40,7 @@ self.addEventListener('install', (event) => {
         '/icons/ms-icon-70x70.png'
         ]
     );
-  });
+  }());
 });
 // -------------------------------------------------- //
 
