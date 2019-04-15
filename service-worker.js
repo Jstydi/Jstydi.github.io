@@ -1,7 +1,7 @@
 console.log('Start');
 // -------------------------------------------------- // Установка необходимых ресурсов в кэш
 self.addEventListener('install', (event) => {
-  console.log('Start install ', event)
+  console.log('Start install ', event);
   event.waitUntil(
     async function() {
     self.skipWaiting();
