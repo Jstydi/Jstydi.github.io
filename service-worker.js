@@ -71,7 +71,7 @@ function Message() { // В-1
         fetch("Jstydi.github.io/content.json",{cache: "no-store"}) // Запрос на сервер для получения новых данных
             .then(function(response) {  
                  if (response.status !== 200) {  // Проверка на ошибку статус не равен (200, ОК) 
-                 console.log('Похоже, возникла проблема. Код состояния: ' + response.status);  
+                 console.log('Похоже, возникла проблема, Код состояния: ' + response.status);  
                  return;  
                  }
              response.json().then(function(data) {  // Данные из сервера 
