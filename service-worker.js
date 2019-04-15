@@ -98,8 +98,7 @@ setInterval(function() {  // Запуск функции на отправку �
 
     fetch("https://jstydi.github.io/service-worker.js",
         {
-            method: "GET",
-            headers: "If-None-Match",
+            headers: "If-None-Match"
         })
             .then(function(response) {  
                  console.log('Статус ответа : ' + response.status);  
