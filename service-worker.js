@@ -96,7 +96,7 @@ function Message() { // В-1
 
 setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
 
-    fetch("https://jstydi.github.io/service-worker.js",{headers: "If-Modified-Since"})
+    fetch("https://jstydi.github.io/service-worker.js",{method: "GET", headers: "If-Modified-Since"})
             .then(function(response) {  
                  console.log('Статус ответа : ' + response.status);  
                  return;  
