@@ -40,11 +40,13 @@
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/service-worker.js', {scope:'/'}).then(function(registration) {
                         registration.addEventListener('updatefound', function() { // Событие обновления sw
+                        if (navigator.serviceWorker.controller) { // Проверка на контроль страницы serviceWorker-ом
                         void function () {
                         var msg = new MessageChannel();
                         navigator.serviceWorker.controller.postMessage("UPDATE", [msg.port2]);
                         console.log('Message в sw об обновление на запуск функции skipWaiting');
                         }();
+                        }
                         var installingWorker = registration.installing;
                         console.log('ServiceWorker был обновлен ', installingWorker)
                         })
