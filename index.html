@@ -40,8 +40,8 @@
             window.addEventListener('load', function() {
                 function reg(){
                 navigator.serviceWorker.register('/service-worker.js', {scope:'/'}).then(function(registration) {
-                        registration.addEventListener('updatefound', function() { // Событие обновления sw
                         registration.update();
+                        registration.addEventListener('updatefound', function() { // Событие обновления sw
                         if (navigator.serviceWorker.controller) { // Проверка на контроль страницы serviceWorker-ом
                         void function () {
                         var msg = new MessageChannel();
