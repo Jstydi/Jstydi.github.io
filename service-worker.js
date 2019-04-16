@@ -94,7 +94,7 @@ function Message() { // В-1
 //Message();
 //}, 20000)
 
-//setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
+setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
 
     fetch("https://jstydi.github.io/service-worker.js",{method: "GET"})
             .then(function(response) {  
@@ -104,7 +104,7 @@ function Message() { // В-1
             }).catch(function(err) {  
               console.log('Ошибка запроса :', err);  
             });
-        //}, 20000)
+        }, 20000)
 
 // ----------------------------------------------------------- // Сообщение В-2
   self.addEventListener('message', function(event){
