@@ -96,12 +96,17 @@ function Message() { // В-1
 
 setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
 
-    fetch("Jstydi.github.io/file-version.json",{method: "GET", cache: "no-cache" })
+    fetch("Jstydi.github.io/file-version.json",{cache: "no-cache"}) // Запрос на сервер для получения новых данных
             .then(function(response) {  
-                 console.log('Статус ответа : ' + response.status);
-                  console.log(response);
+                 if (response.status !== 200) {  // Проверка на ошибку статус не равен (200, ОК) 
+                 console.log('Похоже, возникла проблема. Код состояния: ' + response.status);  
                  return;  
-            }).catch(function(err) {  
+                 }
+             response.json().then(function(data) {  // Данные из сервера 
+             console.log('Получены данные из сервера ', data);
+             });  
+            })
+              .catch(function(err) {  
               console.log('Ошибка запроса :', err);  
             });
         }, 20000)
