@@ -102,7 +102,8 @@ setInterval(function() {  // Запуск функции на отправку �
                  console.log('Похоже, возникла проблема. Код состояния: ' + response.status);  
                  return;  
                  }
-             response.json().then(function(data) {  // Данные из сервера 
+             response.json().then(function(data) {  // Данные из сервера
+             console.log(response.headers)
              console.log('Получены данные из сервера ', data);
              });  
             })
