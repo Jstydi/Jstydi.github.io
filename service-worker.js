@@ -94,17 +94,17 @@ function Message() { // В-1
 //Message();
 //}, 20000)
 
-setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
+//setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
 
-    fetch("https://jstydi.github.io/service-worker.js",{method: "HEAD", cache: "no-cache" })
+    fetch("https://jstydi.github.io/service-worker.js",{method: "GET", cache: "no-cache" })
             .then(function(response) {  
                  console.log('Статус ответа : ' + response.status);
-                  console.log(response)
+                  console.log(response);
                  return;  
             }).catch(function(err) {  
               console.log('Ошибка запроса :', err);  
             });
-        }, 20000)
+       // }, 20000)
 
 // ----------------------------------------------------------- // Сообщение В-2
   self.addEventListener('message', function(event){
