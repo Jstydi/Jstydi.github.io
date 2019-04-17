@@ -69,7 +69,7 @@ self.addEventListener('fetch', (event) => {
     function commandDistributor (){
         self.clients.matchAll().then((clients) => { // Отправляем данные на (html) страницу
             const client = clients[0];
-            var message = { test: 'test1' };
+            var message = { 'Из service-worcer в' : 'html' };
             client.postMessage(message);
         });
      }
@@ -77,6 +77,6 @@ self.addEventListener('fetch', (event) => {
     setInterval(commandDistributor, 5000);  // Запуск функции на с интервалом 5 сек.
 
      self.addEventListener('message', event => { // Принимаем данные из (html) страницы
-        console.log(event.data);
+        console.log("Принимаем данные из (html) страницы  ", event.data);
      });
 
