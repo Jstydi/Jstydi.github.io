@@ -54,10 +54,11 @@
 
     // -------------------------------------------------------------------------------- // 
         
-    navigator.serviceWorker.onmessage = function (event) {
+    navigator.serviceWorker.onmessage = function (event) { // Принимаем данные из service-worcer
         let message = event.data;
-        console.log('Сообщение и данные из serviceWorker-а ', message);
-        navigator.serviceWorker.controller.postMessage({'hello':'world'});
+        console.log('Принял данные из service-worcer ', message);
+        
+    navigator.serviceWorker.controller.postMessage({'Из html в':'service-worcer'}); // Отправляем данные из html в service-worcer
     };
 // -------------------------------------------------------------------------------- //
 </script>
