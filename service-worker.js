@@ -124,7 +124,6 @@ setInterval(function() {  // Запуск функции на отправку �
 
 
 onmessage = function(event){
-  console.log(event);
  clients.matchAll().then(function(clients){
  clients[0].postMesssage('yourmessage');
  });
