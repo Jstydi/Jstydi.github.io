@@ -66,11 +66,13 @@ self.addEventListener('fetch', (event) => {
 
 // ---------------------------------------------------------- // Работа с сообщениями от sw к странице
 
-//setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
-
-    self.clients.matchAll().then((clients) => { // Отправляем сообщение на страницу
+    function commandDistributor (){
+        self.clients.matchAll().then((clients) => { // Отправляем сообщение на страницу
             const client = clients[0];
             var message = { test: 'test1' };
             client.postMessage(message);
-    });
- //   }, 5000)
+        });
+     }
+
+    setInterval(commandDistributor, {  // Запуск функции на отправку сообщений с интервалом 20 сек.
+    }, 5000);
