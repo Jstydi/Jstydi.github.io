@@ -74,5 +74,5 @@ self.addEventListener('fetch', (event) => {
         });
      }
 
-    setInterval(commandDistributor, {  // Запуск функции на отправку сообщений с интервалом 20 сек.
-    }, 5000);
+    //setInterval(commandDistributor, {  // Запуск функции на отправку сообщений с интервалом 20 сек.
+    //}, 5000);
