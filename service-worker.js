@@ -67,11 +67,16 @@ self.addEventListener('fetch', (event) => {
 // ---------------------------------------------------------- // Работа с сообщениями от sw к странице
 
     function commandDistributor (){
-        self.clients.matchAll().then((clients) => { // Отправляем сообщение на страницу
+        self.clients.matchAll().then((clients) => { // Отправляем данные на (html) страницу
             const client = clients[0];
             var message = { test: 'test1' };
             client.postMessage(message);
         });
      }
 
-    //setInterval(commandDistributor, 5000);  // Запуск функции на отправку сообщений с интервалом 20 сек.
+    setInterval(commandDistributor, 5000);  // Запуск функции на с интервалом 5 сек.
+
+     self.addEventListener('message', event => { // Принимаем данные из (html) страницы
+        console.log(event.data);
+     });
+
