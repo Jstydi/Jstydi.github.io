@@ -11,6 +11,7 @@ self.addEventListener('install', (event) => {
     await cache.addAll(
     [
         '/',
+        'file-version.json',
         '/index.html',
         '/manifest.json',
         'https://code.jquery.com/jquery-3.4.0.min.js',
