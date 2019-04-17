@@ -66,7 +66,7 @@ self.addEventListener('fetch', (event) => {
 
 // ---------------------------------------------------------- // Работа с сообщениями от sw к странице
 
-    setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
+//setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
 
 self.clients.matchAll().then((clients) => {
     if (clients && clients.length) { // Отправляем сообщение на страницу
@@ -75,4 +75,4 @@ self.clients.matchAll().then((clients) => {
         client.postMessage(mes); // Отправляем сообщение на страницу 
     }
 });
-}, 5000)
+//}, 5000)
