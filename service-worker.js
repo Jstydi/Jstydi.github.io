@@ -120,13 +120,13 @@ setInterval(function() {  // Запуск функции на отправку �
     event.ports[0].postMessage({'test': 'This is my response.'});
     }
   });
-// ---------------------------------------------------------- //
+// ----------------------------------------------------------  //
 
 
-function commandDistributor(event){
+onmessage = function(event){
   console.log(event);
  clients.matchAll().then(function(clients){
  clients[0].postMesssage('yourmessage');
  });
 }
-commandDistributor();
+//commandDistributor();
