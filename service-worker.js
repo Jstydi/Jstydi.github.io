@@ -125,7 +125,10 @@ setInterval(function() {  // Запуск функции на отправку �
 
 onmessage = function(event){
  self.clients.matchAll().then(function(clients){
- clients[0].postMesssage('yourmessage');
+   if (clients && clients.length) {
+     const client = clients[0];
+ client.postMesssage('yourmessage');
+   }
  });
 }
 //commandDistributor();
