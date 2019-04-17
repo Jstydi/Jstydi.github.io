@@ -67,30 +67,31 @@ self.addEventListener('fetch', (event) => {
 // ---------------------------------------------------------- // Работа с сообщениями от sw к странице
 
 function connection () {
-        var connectdata;
-        fetch("Jstydi.github.io/file-version.json", { cache: "no-cache" }) // Запрос на сервер для получения новых данных
+
+   return fetch("Jstydi.github.io/file-version.json", { cache: "no-cache" })  // Запрос на сервер для получения новых данных
         .then(function (response) {
             if (response.status !== 200) {  // Проверка на ошибку статус не равен (200, ОК) 
                 console.log('Похоже, возникла проблема. Код состояния: ' + response.status);
-                connectdata = false;
-                return connectdata;
+                return;
             }
-            response.json().then(function (data) {  // Данные из сервера
+            return response.json().then(function (data) {  // Данные из сервера
                 console.log('Получены данные из сервера ', data);
-                connectdata = data
-                return connectdata;
+                return data;
             });
         })
         .catch(function (err) {
             console.log('Ошибка запроса :', err);
+            return err;
         });
       }
 
     //setInterval(commandDistributor, 5000);  // Запуск функции на с интервалом 5 сек.
 
     function commandDistributor (){
-        var connectData = connection();
-        console.log('Данные из сервера ',connectData);
+        connection()
+            .then((results) => {
+            console.log(results);
+         })
         self.clients.matchAll().then((clients) => { // Отправляем данные на (html) страницу
             const client = clients[0];
             var message = { 'Из service-worcer в' : 'html' };
