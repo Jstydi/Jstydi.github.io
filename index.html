@@ -39,7 +39,7 @@
     if ('serviceWorker' in navigator) { // Регестрация serviceWorker
         window.addEventListener('load', function () {
             navigator.serviceWorker.register('/service-worker.js', { scope: '/' }).then(function (registration) {
-                registration.update();
+                //registration.update();
                 registration.addEventListener('updatefound', function () { // Событие обновления sw
                     var installingWorker = registration.installing;
                     console.log('ServiceWorker был обновлен ', installingWorker)
