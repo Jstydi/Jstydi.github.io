@@ -49,7 +49,7 @@ self.addEventListener('install', (event) => {
 
 // -------------------------------------------------- // Активация sw
 self.addEventListener('activate', (event) => {
-    //self.clients.claim();
+    self.clients.claim();
     console.log("Start activate", event);
 });
 // -------------------------------------------------- //
