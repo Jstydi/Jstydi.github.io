@@ -65,6 +65,10 @@ self.addEventListener('fetch', (event) => {
 // ---------------------------------------------------------- //
 
 // ---------------------------------------------------------- // Работа с сообщениями от sw к странице
-    self.clients.matchAll().then(function(clients){
-    clients[0].postMesssage('yourmessage');
-    });
+    self.clients.matchAll().then((clients) => {
+    if (clients && clients.length) { // Отправляем сообщение на страницу
+        const client = clients[0];
+        var mes = { test: 'test' };
+        client.postMessage(mes); // Отправляем сообщение на страницу 
+    }
+});
