@@ -71,7 +71,7 @@ self.addEventListener('fetch', (event) => {
 self.clients.matchAll().then((clients) => {
     if (clients && clients.length) { // Отправляем сообщение на страницу
         const client = clients[0];
-        var mes = { test: 'test' };
+        var mes = { test: 'test1' };
         client.postMessage(mes); // Отправляем сообщение на страницу 
     }
 });
