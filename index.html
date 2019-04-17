@@ -54,9 +54,10 @@
 
     // -------------------------------------------------------------------------------- // 
         
-    navigator.serviceWorker.onmessage = function (e) {
-        let message = e.data;
+    navigator.serviceWorker.onmessage = function (event) {
+        let message = event.data;
         console.log('Сообщение и данные из serviceWorker-а ', message);
+        navigator.serviceWorker.controller.postMessage({'hello':'world'});
     };
 // -------------------------------------------------------------------------------- //
 </script>
