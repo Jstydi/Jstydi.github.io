@@ -74,7 +74,7 @@ self.addEventListener('fetch', (event) => {
         });
      }
 
-    setInterval(commandDistributor, 5000);  // Запуск функции на с интервалом 5 сек.
+    //setInterval(commandDistributor, 5000);  // Запуск функции на с интервалом 5 сек.
 
      self.addEventListener('message', event => { // Принимаем данные из (html) страницы
         console.log("Принимаем данные из (html) страницы  ", event.data);
