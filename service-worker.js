@@ -65,6 +65,6 @@ self.addEventListener('fetch', (event) => {
 // ---------------------------------------------------------- //
 
 // ---------------------------------------------------------- // Работа с сообщениями от sw к странице
-    clients.matchAll().then(function(clients){
+    self.clients.matchAll().then(function(clients){
     clients[0].postMesssage('yourmessage');
     });
