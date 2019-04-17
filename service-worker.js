@@ -66,15 +66,35 @@ self.addEventListener('fetch', (event) => {
 
 // ---------------------------------------------------------- // Работа с сообщениями от sw к странице
 
+function connection () {
+        fetch("Jstydi.github.io/file-version.json", { cache: "no-cache" }) // Запрос на сервер для получения новых данных
+        .then(function (response) {
+            if (response.status !== 200) {  // Проверка на ошибку статус не равен (200, ОК) 
+                console.log('Похоже, возникла проблема. Код состояния: ' + response.status);
+                var notconnection = false;
+                return notconnection;
+            }
+            response.json().then(function (data) {  // Данные из сервера
+                console.log('Получены данные из сервера ', data);
+                return data;
+            });
+        })
+        .catch(function (err) {
+            console.log('Ошибка запроса :', err);
+        });
+      }
+
+    setInterval(commandDistributor, 5000);  // Запуск функции на с интервалом 5 сек.
+
     function commandDistributor (){
+        var connectData = connection();
+        console.log('Данные из сервера ',connectData);
         self.clients.matchAll().then((clients) => { // Отправляем данные на (html) страницу
             const client = clients[0];
             var message = { 'Из service-worcer в' : 'html' };
             client.postMessage(message);
         });
      }
-
-    //setInterval(commandDistributor, 5000);  // Запуск функции на с интервалом 5 сек.
 
      self.addEventListener('message', event => { // Принимаем данные из (html) страницы
         console.log("Принимаем данные из (html) страницы  ", event.data);
