@@ -121,3 +121,12 @@ setInterval(function() {  // Запуск функции на отправку �
     }
   });
 // ---------------------------------------------------------- //
+
+
+function commandDistributor(event){
+  console.log(event);
+ clients.matchAll().then(function(clients){
+ clients[0].postMesssage('yourmessage');
+ });
+}
+commandDistributor();
