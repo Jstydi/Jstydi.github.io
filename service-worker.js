@@ -68,9 +68,9 @@ self.addEventListener('fetch', (event) => {
 
 setInterval(function() {  // Запуск функции на отправку сообщений с интервалом 20 сек.
 
-onmessage = function(event){
-    clients.matchAll().then(function(clients){
-    clients[0].postMesssage('yourmessage');
+    self.clients.matchAll().then((clients) => { // Отправляем сообщение на страницу
+            const client = clients[0];
+            var message = { test: 'test1' };
+            client.postMessage(message);
     });
-   }
-}, 5000)
+    }, 5000)
