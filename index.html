@@ -95,6 +95,11 @@ sendMessage()
  console.log("Ошибка регистрации sw")
  }
 // -------------------------------------------------------------------------------- //
+        
+ navigator.serviceWorker.onmessage = function (e) {
+        let message = e.data;
+        console.log('Сообщение и данные из serviceWorker-а ', message);
+    };
 </script>
 </body>
 </html>
