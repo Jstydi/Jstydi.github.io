@@ -77,7 +77,8 @@ function connection () {
             }
             return response.json().then(function (data) {  // Данные из сервера
                 //console.log('Получены данные из сервера ', data);
-                console.log('Адрес запроса ', response.url)
+                console.log('Адрес запроса ', response.url);
+                compareCache(data, response.url);
                 return data;
             });
         })
@@ -88,15 +89,22 @@ function connection () {
         });
       }
 
-    //setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
+    function compareCache(data, url){
+        return caches.match(url).then(function(response) {
+        console.log(response);
+        console.log(data);
+        });
+    }
+
+    setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
 
     function commandDistributor (){
         
         connection().then((connectresults) => {
             if(connectresults == false){
-            console.log('Сеть недоступна ',connectresults);
+            //console.log('Сеть недоступна ',connectresults);
             } else {
-            console.log('Полученные данные ',connectresults);
+            //console.log('Полученные данные ',connectresults);
             }
          })
             
