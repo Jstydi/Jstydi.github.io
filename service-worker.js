@@ -87,7 +87,7 @@ function connection () {
         });
       }
 
-    setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
+    //setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
 
     function commandDistributor (){
         connection().then((connectresults) => {
