@@ -92,9 +92,9 @@ function connection () {
     function commandDistributor (){
         connection().then((connectresults) => {
             if(connectresults == false){
-            console.log(connectresults);
+            console.log('Сеть недоступна ',connectresults);
             } esle {
-            console.log(connectresults);
+            console.log('Полученные данные ',connectresults);
             }
          })
             
