@@ -91,9 +91,15 @@ function connection () {
     function compareCache(data, url){
         //return 
         caches.match(url).then(function(response) {
-        response.json().then(function(res){ 
-            console.log(res)
+        response.json().then(function(res){
+            
+            console.log(res);
             console.log(data);
+                        
+            for (var key in data) {
+                console.log(key);
+            }
+       
             })
         
         });
