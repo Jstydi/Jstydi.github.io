@@ -95,10 +95,6 @@ function connection () {
             
             console.log('Кэш ',res);
             console.log('Сеть ',data);
-                        
-            for (const key of Object.keys(data)) {
-            console.log(key, obj[key]);
-            }
            
             })
         
