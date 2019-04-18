@@ -98,6 +98,9 @@ function connection () {
                         
             for (var key in data) {
                 console.log(key, data[key]);
+                    for (var key1 in res) {
+                        console.log(key1, res[key1]);
+                    }
             }
            
             })
