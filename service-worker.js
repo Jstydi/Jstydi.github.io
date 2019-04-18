@@ -97,7 +97,7 @@ function connection () {
             console.log(data);
                         
             for (var key in data) {
-                console.log(key);
+                console.log(key, data[key]);
             }
        
             })
