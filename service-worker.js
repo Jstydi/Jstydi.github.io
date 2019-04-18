@@ -76,7 +76,7 @@ function connection () {
                 return netconnect;
             }
             return response.json().then(function (data) {  // Данные из сервера
-                console.log('Получены данные из сервера ', data);
+                //console.log('Получены данные из сервера ', data);
                 console.log('Адрес запроса ', response.url)
                 return data;
             });
@@ -88,7 +88,7 @@ function connection () {
         });
       }
 
-    setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
+    //setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
 
     function commandDistributor (){
         
