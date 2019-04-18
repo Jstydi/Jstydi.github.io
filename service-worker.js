@@ -77,6 +77,7 @@ function connection () {
             }
             return response.json().then(function (data) {  // Данные из сервера
                 console.log('Получены данные из сервера ', data);
+                console.log('Адрес запроса ', request.url)
                 return data;
             });
         })
@@ -90,6 +91,7 @@ function connection () {
     //setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
 
     function commandDistributor (){
+        
         connection().then((connectresults) => {
             if(connectresults == false){
             console.log('Сеть недоступна ',connectresults);
