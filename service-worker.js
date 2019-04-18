@@ -104,13 +104,11 @@ function connection () {
             function objArr(obj, i){
                 if(i == 0){
                     for (var key in obj) {
-                        console.log(key, obj[key]);
                         fetchArr[i][i].push(key);
                         fetchArr[0][1].push(obj[key]);
                     }
                 } else if(i == 1){
                     for (var key in obj) {
-                        console.log(key, obj[key]);
                         cacheArr[0][0].push(key);
                         cacheArr[0][i].push(obj[key]);
                     }
