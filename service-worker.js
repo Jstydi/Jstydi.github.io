@@ -98,7 +98,7 @@ function connection () {
                         
             for (var key in data) {
                 console.log(key, data[key]);
-                compare(key, data[key]);
+                compare(res, key, data[key]);
             }
             
             function compare(obj, prop, val){
