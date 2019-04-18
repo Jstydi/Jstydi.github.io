@@ -93,11 +93,11 @@ function connection () {
         caches.match(url).then(function(response) {
         response.json().then(function(res){
             
-            console.log(res);
-            console.log(data);
+            console.log('Кэш ',res);
+            console.log('Сеть ',data);
                         
-            for (var key in data) {
-                console.log(key, data[key]);
+            for (const key of Object.keys(data)) {
+            console.log(key, obj[key]);
             }
            
             })
