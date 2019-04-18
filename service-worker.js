@@ -90,7 +90,7 @@ function connection () {
 
     function compareCache(data, url){
         //return 
-        cache.match(url).then(function(response) {
+        caches.match(url).then(function(response) {
         console.log(response);
         console.log(url);
         console.log(data);
