@@ -67,8 +67,8 @@ self.addEventListener('fetch', (event) => {
 // ---------------------------------------------------------- // Работа с сообщениями от sw к странице
 
 function connection () {
-   //var url = "https://jstydi.github.io/file-version.json";
-   return fetch("https://jstydi.github.io/file-version.json",{cache:"no-cache"})  // Запрос на сервер для получения новых данных
+   var url = "https://jstydi.github.io/file-version.json";
+   return fetch(url, {cache:"no-cache"})  // Запрос на сервер для получения новых данных
         .then(function (response) {
             if (response.status !== 200) {  // Проверка на ошибку статус не равен (200, ОК) 
                 console.log('Похоже, возникла проблема. Код состояния: ' + response.status);
