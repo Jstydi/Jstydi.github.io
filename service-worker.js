@@ -93,7 +93,7 @@ function connection () {
         connection().then((connectresults) => {
             if(connectresults == false){
             console.log('Сеть недоступна ',connectresults);
-            } esle {
+            } else {
             console.log('Полученные данные ',connectresults);
             }
          })
