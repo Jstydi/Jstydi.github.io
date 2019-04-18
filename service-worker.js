@@ -97,16 +97,9 @@ function connection () {
             console.log(data);
                         
             for (var key in data) {
-                compare(res, key, data[key]);
+                console.log(key, data[key]);
             }
-            
-            function compare(obj, prop, val){
-                for (var key in obj) {
-                    console.log(key, obj[key]);
-                    console.log(prop, val);
-                }
-            }
-       
+           
             })
         
         });
