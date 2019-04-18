@@ -1,7 +1,7 @@
-console.log('Start 1');
+console.log('Start');
 // -------------------------------------------------- // Установка необходимых ресурсов в кэш
 self.addEventListener('install', (event) => {
-    console.log('Start install ', event);
+    console.log('Start install');
     event.waitUntil(
         async function () {
             self.skipWaiting();
@@ -50,7 +50,7 @@ self.addEventListener('install', (event) => {
 // -------------------------------------------------- // Активация sw
 self.addEventListener('activate', (event) => {
     self.clients.claim();
-    console.log("Start activate", event);
+    console.log("Start activate");
 });
 // -------------------------------------------------- //
 
@@ -59,7 +59,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
     console.log('Start fetch ', event.request.url)
     event.respondWith(
-        caches.match(event.request) // Все требуемые ресурсы бырутся из кэш
+        caches.match(event.request) // Все требуемые ресурсы беруться из кэш
     )
 });
 // ---------------------------------------------------------- //
