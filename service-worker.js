@@ -93,7 +93,7 @@ function connection () {
         //return cache.match(url).then(function(response) {
         //console.log(response);
         console.log(data);
-        });
+        //});
     }
 
     setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
