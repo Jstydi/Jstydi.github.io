@@ -95,19 +95,30 @@ function connection () {
             
             console.log('Кэш ',res);
             console.log('Сеть ',data);
-            var arrcompare = [[],[]];
+            var fetchArr = [[[],[]]];
+            var cacheArr = [[[],[]]];
             var arr = [res, data];
             for (var i = 0; i < arr.length; i++){
             objArr(arr[i], i)    
             }
             function objArr(obj, i){
-                for (var key in obj) {
-                    console.log(key, obj[key]);
-                    arrcompare[i].push(key);
-                    arrcompare[i][1].push(obj[key]);
-                }
+                if(i == 0){
+                    for (var key in obj) {
+                        console.log(key, obj[key]);
+                        fetchArr[i][i].push(key);
+                        fetchArr[0][1].push(obj[key]);
+                    }
+                } else if(i == 1){
+                    for (var key in obj) {
+                        console.log(key, obj[key]);
+                        cacheArr[0][0].push(key);
+                        cacheArr[0][i].push(obj[key]);
+                    }
+                 }
+                
             }
-            console.log(arrcompare);
+            console.log(fetchArr);
+            console.log(cacheArr);
             })
         
         });
