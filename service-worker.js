@@ -67,7 +67,7 @@ self.addEventListener('fetch', (event) => {
 // ---------------------------------------------------------- // Работа с сообщениями от sw к странице
 
 function connection () {
-   var url = "https://jstydi.github.io/file-version.json";
+   //var url = "https://jstydi.github.io/file-version.json";
    return fetch("https://jstydi.github.io/file-version.json", { cache: "no-cache" })  // Запрос на сервер для получения новых данных
         .then(function (response) {
             if (response.status !== 200) {  // Проверка на ошибку статус не равен (200, ОК) 
@@ -96,7 +96,7 @@ function connection () {
         });
     }
 
-    //setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
+    setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
 
     function commandDistributor (){
         
