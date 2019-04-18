@@ -90,8 +90,12 @@ function connection () {
     //setInterval(commandDistributor, 5000);  // Запуск функции на с интервалом 5 сек.
 
     function commandDistributor (){
-        connection().then((results) => {
-            console.log(results);
+        connection().then((connectresults) => {
+            if(connectresults == false){
+            console.log(connectresults);
+            } esle {
+            console.log(connectresults);
+            }
          })
             
         self.clients.matchAll().then((clients) => { // Отправляем данные на (html) страницу
