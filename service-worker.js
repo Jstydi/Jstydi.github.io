@@ -103,7 +103,7 @@ function connection () {
             function objArr(obj, i){
                 for (var key in obj) {
                     console.log(key, obj[key]);
-                    arrcompare[i].push([key],[obj[key]]);
+                    arrcompare[i].push(key,obj[key]);
                 }
             }
             console.log(arrcompare);
