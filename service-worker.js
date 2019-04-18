@@ -78,7 +78,7 @@ function connection () {
             return response.json().then(function (data) {  // Данные из сервера
                 console.log('Получены данные из сервера ', data);
                 console.log('Адрес запроса ', response.url);
-                compareCache(data);
+                compareCache(data, response.url);
                 return data;
             });
         })
@@ -89,9 +89,9 @@ function connection () {
         });
       }
 
-    function compareCache(data){
+    function compareCache(data, url){
         //return cache.match(url).then(function(response) {
-        //console.log(response);
+        console.log(url);
         console.log(data);
         //});
     }
