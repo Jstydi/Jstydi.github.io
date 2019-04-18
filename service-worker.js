@@ -72,7 +72,8 @@ function connection () {
         .then(function (response) {
             if (response.status !== 200) {  // Проверка на ошибку статус не равен (200, ОК) 
                 console.log('Похоже, возникла проблема. Код состояния: ' + response.status);
-                return;
+                var netconnect = false;
+                return netconnect;
             }
             return response.json().then(function (data) {  // Данные из сервера
                 console.log('Получены данные из сервера ', data);
@@ -81,17 +82,18 @@ function connection () {
         })
         .catch(function (err) {
             console.log('Ошибка запроса :', err);
-            return err;
+            var netconnect = false;
+            return netconnect;
         });
       }
 
     //setInterval(commandDistributor, 5000);  // Запуск функции на с интервалом 5 сек.
 
     function commandDistributor (){
-        connection()
-            .then((results) => {
+        connection().then((results) => {
             console.log(results);
          })
+            
         self.clients.matchAll().then((clients) => { // Отправляем данные на (html) страницу
             const client = clients[0];
             var message = { 'Из service-worcer в' : 'html' };
