@@ -96,7 +96,7 @@ function connection () {
             console.log('Кэш ',res);
             console.log('Сеть ',data);
             var ar = [res, data];
-            console.log(ar)
+            console.log(ar[0])
             //for (var i = 0; i < 1; i++){
             //objArr()    
             //}
