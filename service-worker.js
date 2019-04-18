@@ -94,7 +94,7 @@ function connection () {
         console.log(response);
         console.log(url);
         console.log(data);
-        //});
+        });
     }
 
     setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
