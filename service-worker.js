@@ -78,7 +78,8 @@ function connection () {
             return response.json().then(function (data) {  // Данные из сервера
                 //console.log('Получены данные из сервера ', data);
                 console.log('Адрес запроса ', response.url);
-                compareCache(data, response.url);
+                var url = response.url;
+                compareCache(data, url);
                 return data;
             });
         })
