@@ -135,7 +135,7 @@ function compareCache(data, url) {
             function comparisonResult(fetchArr, cacheArr) {
                 var resObj = {};
                 for (var i = 0; i < fetchArr[0][1].length; i++) {
-                    if (fetchArr[0][1][i] === cacheArr[0][1][i]) {
+                    if (fetchArr[0][1][i] !== cacheArr[0][1][i]) {
                         console.log('Не совпадение', fetchArr[0][0][i], fetchArr[0][1][i]);
                         var prop = fetchArr[0][0][i];
                         var val = fetchArr[0][1][i];
