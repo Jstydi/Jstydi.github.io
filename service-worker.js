@@ -134,8 +134,7 @@ function compareCache(data, url) {
 
 
             function comparisonResult(fetchArr, cacheArr) {
-            console.log(fetchArr);
-            console.log(cacheArr);
+            
               for (var i = 0; i < fetchArr[0][1].length; i++){
                 if(fetchArr[0][1][i] === cacheArr[0][1][i]){
                     console.log(fetchArr[0][1][i])
