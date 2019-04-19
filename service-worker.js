@@ -79,12 +79,10 @@ function connection() {
             }
             return response.json().then(function (data) { // Данные из сервера
                 //console.log('Получены данные из сервера ', data);
-               //var tru =//
+               
                 //compareCache(data, response.url).then(function(res) {
                 //console.log(res)
                 //})
-                //console.log(tru)
-                //var t = "Данные из fetch запросса";
                 return compareCache(data, response.url);
             });
         })
