@@ -66,16 +66,18 @@ self.addEventListener('fetch', (event) => {
 
 // ---------------------------------------------------------- // Работа с сообщениями от sw к странице
 
-function connection () {
-   var url = "https://jstydi.github.io/file-version.json";
-   return fetch(url, {cache:"no-cache"})  // Запрос на сервер для получения новых данных
+function connection() {
+    var url = "https://jstydi.github.io/file-version.json";
+    return fetch(url, {
+            cache: "no-cache"
+        }) // Запрос на сервер для получения новых данных
         .then(function (response) {
-            if (response.status !== 200) {  // Проверка на ошибку статус не равен (200, ОК) 
+            if (response.status !== 200) { // Проверка на ошибку статус не равен (200, ОК) 
                 console.log('Похоже, возникла проблема. Код состояния: ' + response.status);
                 var netconnect = false;
                 return netconnect;
             }
-            return response.json().then(function (data) {  // Данные из сервера
+            return response.json().then(function (data) { // Данные из сервера
                 //console.log('Получены данные из сервера ', data);
                 compareCache(data, response.url);
                 var t = "Test";
@@ -87,69 +89,91 @@ function connection () {
             var netconnect = false;
             return netconnect;
         });
-      }
+}
 
-    function compareCache(data, url){
-        //return 
-        caches.match(url).then(function(response) {
-        response.json().then(function(res){
-            
-            console.log('Кэш ',res);
-            console.log('Сеть ',data);
-            var fetchArr = [[[],[]]];
-            var cacheArr = [[[],[]]];
+function compareCache(data, url) {
+    //return 
+    caches.match(url).then(function (response) {
+        response.json().then(function (res) {
+
+            console.log('Кэш ', res);
+            console.log('Сеть ', data);
+            var fetchArr = [
+                [
+                    [],
+                    []
+                ]
+            ];
+            var cacheArr = [
+                [
+                    [],
+                    []
+                ]
+            ];
             var arr = [res, data];
-          
-            for (var i = 0; i < arr.length; i++){
-            objArr(arr[i], i)    
+
+            for (var i = 0; i < arr.length; i++) {
+                objArr(arr[i], i)
             }
-            function objArr(obj, i){
-                if(i == 0){
+
+            function objArr(obj, i) {
+                if (i == 0) {
                     for (var key in obj) {
                         fetchArr[i][i].push(key);
                         fetchArr[0][1].push(obj[key]);
-                        
+
                     }
-                } else if(i == 1){
+                } else if (i == 1) {
                     for (var key in obj) {
                         cacheArr[0][0].push(key);
                         cacheArr[0][i].push(obj[key]);
-                        
+
                     }
-                 }
+                }
             }
-            
-            
-            function comparisonResult(fetchArr, cacheArr){
+
+
+            function comparisonResult(fetchArr, cacheArr) {
             console.log(fetchArr);
             console.log(cacheArr);
+              for (var i = 0; i < fetchArr[0][1].length; i++){
+                if(fetchArr[0][1][i] === cacheArr[0][1][i]){
+                    console.log(fetchArr[0][1][i])
+                    console.log(cacheArr[0][1][i])
+                    //console.log(i)
+                } else {
+                console.log('Не совпадение',fetchArr[0][0][i], fetchArr[0][1][i])
+                }
+              }
             }
-            comparisonResult(fetchArr, cacheArr);
-            })
-        
-        });
-    }
-
-    setInterval(commandDistributor, 20000);  // Запуск функции на с интервалом 5 сек.
-
-    function commandDistributor (){
-        
-        connection().then((connectresults) => {
-            if(connectresults == false){
-            //console.log('Сеть недоступна ',connectresults);
-            } else {
-            //console.log('Полученные данные ',connectresults);
-            }
-         })
             
-        self.clients.matchAll().then((clients) => { // Отправляем данные на (html) страницу
-            const client = clients[0];
-            var message = { 'Из service-worcer в' : 'html' };
-            client.postMessage(message);
-        });
-     }
+            comparisonResult(fetchArr, cacheArr);
+        })
 
-     self.addEventListener('message', event => { // Принимаем данные из (html) страницы
-        console.log("Принимаем данные из (html) страницы  ", event.data);
-     });
+    });
+}
 
+setInterval(commandDistributor, 20000); // Запуск функции на с интервалом 5 сек.
+
+function commandDistributor() {
+
+    connection().then((connectresults) => {
+        if (connectresults == false) {
+            //console.log('Сеть недоступна ',connectresults);
+        } else {
+            //console.log('Полученные данные ',connectresults);
+        }
+    })
+
+    self.clients.matchAll().then((clients) => { // Отправляем данные на (html) страницу
+        const client = clients[0];
+        var message = {
+            'Из service-worcer в': 'html'
+        };
+        client.postMessage(message);
+    });
+}
+
+self.addEventListener('message', event => { // Принимаем данные из (html) страницы
+    console.log("Принимаем данные из (html) страницы  ", event.data);
+});
