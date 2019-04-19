@@ -124,6 +124,7 @@ function connection () {
             console.log(fetchArr);
             console.log(cacheArr);
             }
+            comparisonResult(fetchArr, cacheArr);
             })
         
         });
