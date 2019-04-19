@@ -142,6 +142,7 @@ function compareCache(data, url) {
                         resObj[prop] = val;
                     } else {
                         console.log("Равны");
+                        resObj.Res = "Без изменений";
                     }
                 }
                 return resObj;
