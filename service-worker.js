@@ -79,7 +79,8 @@ function connection() {
             }
             return response.json().then(function (data) { // Данные из сервера
                 //console.log('Получены данные из сервера ', data);
-                compareCache(data, response.url);
+               var tru = compareCache(data, response.url);
+                console.log(tru)
                 var t = "Данные из fetch запросса";
                 return t;
             });
@@ -92,9 +93,9 @@ function connection() {
 }
 
 function compareCache(data, url) {
-    //return 
-    caches.match(url).then(function (response) {
-        response.json().then(function(res) {
+    
+   return caches.match(url).then(function (response) {
+       return response.json().then(function(res) {
 
             console.log('Кэш ', res);
             console.log('Сеть ', data);
