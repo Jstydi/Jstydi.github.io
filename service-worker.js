@@ -79,8 +79,7 @@ function connection() {
             }
             return response.json().then(function (data) { // Данные из сервера
                 //console.log('Получены данные из сервера ', data);
-                var teb = compareCache(data, response.url);
-                console.log(teb);
+                compareCache(data, response.url);
                 var t = "Данные из fetch запросса";
                 return t;
             });
@@ -95,7 +94,7 @@ function connection() {
 function compareCache(data, url) {
     //return 
     caches.match(url).then(function (response) {
-        response.json().then(function (res) {
+        response.json().then(function(res) {
 
             console.log('Кэш ', res);
             console.log('Сеть ', data);
@@ -150,10 +149,10 @@ function compareCache(data, url) {
             }
             var returnCompare = comparisonResult(fetchArr, cacheArr);
             console.log(returnCompare);
+            return returnCompare;
         })
 
     });
-    return returnCompare;
 }
 
 setInterval(commandDistributor, 20000); // Запуск функции на с интервалом 5 сек.
