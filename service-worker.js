@@ -80,7 +80,7 @@ function connection() {
             return response.json().then(function (data) { // Данные из сервера
                 //console.log('Получены данные из сервера ', data);
                 compareCache(data, response.url);
-                var t = "Test";
+                var t = "Данные из fetch запросса";
                 return t;
             });
         })
@@ -162,7 +162,7 @@ function commandDistributor() {
         if (connectresults == false) {
             //console.log('Сеть недоступна ',connectresults);
         } else {
-            //console.log('Полученные данные ',connectresults);
+            console.log('Полученные данные ', connectresults);
         }
     })
 
