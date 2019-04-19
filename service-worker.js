@@ -78,7 +78,8 @@ function connection () {
             return response.json().then(function (data) {  // Данные из сервера
                 //console.log('Получены данные из сервера ', data);
                 compareCache(data, response.url);
-                return data;
+                var t = "Test";
+                return t;
             });
         })
         .catch(function (err) {
@@ -130,7 +131,7 @@ function connection () {
             if(connectresults == false){
             //console.log('Сеть недоступна ',connectresults);
             } else {
-            //console.log('Полученные данные ',connectresults);
+            console.log('Полученные данные ',connectresults);
             }
          })
             
