@@ -99,6 +99,11 @@ function connection () {
             var fetchArr = [[[],[]]];
             var cacheArr = [[[],[]]];
             var arr = [res, data];
+            var comparRes = function comparisonResult(Arr){
+            return Arr
+            }
+            
+            
             for (var i = 0; i < arr.length; i++){
             objArr(arr[i], i)    
             }
@@ -120,9 +125,6 @@ function connection () {
             
             console.log(fetchArr);
             console.log(cacheArr);
-            var comparRes = function comparisonResult(Arr){
-            return Arr
-            }
             console.log(comparRes)
             })
         
