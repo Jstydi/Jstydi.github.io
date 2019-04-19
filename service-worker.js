@@ -79,7 +79,8 @@ function connection() {
             }
             return response.json().then(function (data) { // Данные из сервера
                 //console.log('Получены данные из сервера ', data);
-                compareCache(data, response.url);
+                var teb = compareCache(data, response.url);
+                console.log(teb);
                 var t = "Данные из fetch запросса";
                 return t;
             });
@@ -152,6 +153,7 @@ function compareCache(data, url) {
         })
 
     });
+    return returnCompare;
 }
 
 setInterval(commandDistributor, 20000); // Запуск функции на с интервалом 5 сек.
