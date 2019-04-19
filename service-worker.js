@@ -99,11 +99,7 @@ function connection () {
             var fetchArr = [[[],[]]];
             var cacheArr = [[[],[]]];
             var arr = [res, data];
-            var comparRes = function comparisonResult(Arr){
-            return Arr
-            }
-            
-            
+          
             for (var i = 0; i < arr.length; i++){
             objArr(arr[i], i)    
             }
@@ -112,20 +108,20 @@ function connection () {
                     for (var key in obj) {
                         fetchArr[i][i].push(key);
                         fetchArr[0][1].push(obj[key]);
-                        comparisonResult(fetchArr);
+                        
                     }
                 } else if(i == 1){
                     for (var key in obj) {
                         cacheArr[0][0].push(key);
                         cacheArr[0][i].push(obj[key]);
-                        comparisonResult(cacheArr);
+                        
                     }
                  }
             }
             
             console.log(fetchArr);
             console.log(cacheArr);
-            console.log(comparRes)
+            
             })
         
         });
