@@ -119,9 +119,11 @@ function connection () {
                  }
             }
             
+            
+            function comparisonResult(fetchArr, cacheArr){
             console.log(fetchArr);
             console.log(cacheArr);
-            
+            }
             })
         
         });
