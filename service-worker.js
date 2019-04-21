@@ -89,7 +89,7 @@ function connection() {
             });
         })
         .then(function (response) {
-        console.log(response.status)
+        console.log(response)
         })
         .catch(function (err) {
             console.log("Ошибка запроса :", err);
