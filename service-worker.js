@@ -157,14 +157,14 @@ function compareCache(data, url) {
 setInterval(commandDistributor, 20000); // Запуск функции на с интервалом 5 сек.
 
 function commandDistributor() {
-    var t0 = performance.now();
+    var t0 = performance.now(); // Начало время выполнения
     connection().then(connectresults => {
         if (connectresults == false) {
             //console.log('Сеть недоступна ',connectresults);
         } else {
             console.log("Полученные данные ", connectresults);
-            var t1 = performance.now();
-            console.log((t1 - t0) + " milliseconds");
+            var t1 = performance.now(); // Конец времени выполнения
+            console.log((t1 - t0) + " ms"); // Результат 
         }
     });
 
