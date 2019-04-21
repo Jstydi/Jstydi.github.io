@@ -32,10 +32,12 @@
 
     if (navigator.serviceWorker.controller) { // Проверка на контроль страницы serviceWorker-ом
         console.log("Страница контролируется serviceWorker");
+        
+        
+        
     } else {
         console.log("Страница не контролируется serviceWorker");
-    }
-
+    
     if ('serviceWorker' in navigator) { // Регестрация serviceWorker
         window.addEventListener('load', function () {
             navigator.serviceWorker.register('/service-worker.js', { scope: '/' }).then(function (registration) {
@@ -51,7 +53,7 @@
             );
         });
     }
-
+}
     // -------------------------------------------------------------------------------- // 
         
     navigator.serviceWorker.onmessage = function (event) { // Принимаем данные из service-worcer
