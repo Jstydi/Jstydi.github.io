@@ -88,9 +88,6 @@ function connection() {
                 return compareCache(data, response.url);
             });
         })
-        .then(function (response) {
-        console.log(response)
-        })
         .catch(function (err) {
             console.log("Ошибка запроса :", err);
             var connect = false;
