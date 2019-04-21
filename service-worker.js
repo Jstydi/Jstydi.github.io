@@ -76,9 +76,9 @@ function connection() {
                 console.log(
                     "Похоже, возникла проблема. Код состояния: " + response.status
                 );
-                var netconnect = false;
-                return netconnect;
-            }
+                var connect = false;
+                return connect;
+            };
             return response.json().then(function (data) {
                 //console.log('Получены данные из сервера ', data);
 
@@ -88,10 +88,13 @@ function connection() {
                 return compareCache(data, response.url);
             });
         })
+        .then(function (response) {
+        console.log(response.status)
+        })
         .catch(function (err) {
             console.log("Ошибка запроса :", err);
-            var netconnect = false;
-            return netconnect;
+            var connect = false;
+            return connect;
         });
 }
 
@@ -154,7 +157,7 @@ function compareCache(data, url) {
     });
 }
 
-setInterval(commandDistributor, 20000); // Запуск функции на с интервалом 5 сек.
+setInterval(commandDistributor, 20000); // Запуск функции на с интервалом 20 сек.
 
 function commandDistributor() {
     var t0 = performance.now(); // Начало время выполнения
