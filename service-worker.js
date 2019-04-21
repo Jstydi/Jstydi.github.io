@@ -164,7 +164,7 @@ function commandDistributor() {
         } else {
             console.log("Полученные данные ", connectresults);
             var t1 = performance.now(); // Конец времени выполнения
-            console.log((t1 - t0) + " ms"); // Результат 
+            console.log((t1 - t0) + " ms "); // Результат 
         }
     });
 
