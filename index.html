@@ -28,7 +28,7 @@
     <div><p>Hello GitHab Jstydi</p></div>
     <div><p>Hello GitHab Jstydi 1</p></div>
     
-    <script>
+    <script>    
     function serviceWorker() {
       if ('serviceWorker' in navigator) { // Регестрация serviceWorker
         window.addEventListener('load', function () {
@@ -51,8 +51,10 @@
     function massageDistributor() {
       navigator.serviceWorker.onmessage = function (event) { // Принимаем данные из service-worcer
         let message = event.data;
-        if (message == 'UPDATE') {
-
+        if (message == 'SWUPDATE') {
+            serviceWorker();
+        } else if (message == 'CONTENTUPDATE'){
+        
         }
         console.log('Принял данные из service-worcer ', message);
 
@@ -62,17 +64,14 @@
       }
     }
         
-    if (navigator.serviceWorker.controller) { // Проверка на контроль страницы serviceWorker-ом
+    // -------------------------------------------------------------------------------- // 
+       if (navigator.serviceWorker.controller) { // Проверка на контроль страницы serviceWorker-ом
         massageDistributor();
         console.log("Страница контролируется serviceWorker");
     } else {
         serviceWorker();
         console.log("Страница не контролируется serviceWorker");
     }
-    // -------------------------------------------------------------------------------- // 
-       
-        
-    
 // -------------------------------------------------------------------------------- //
 </script>
 </body>
