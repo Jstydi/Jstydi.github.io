@@ -154,7 +154,7 @@ function compareCache(data, url) {
     });
 }
 
-setInterval(commandDistributor, 20000); // Запуск функции на с интервалом 20 сек.
+
 
 function commandDistributor() {
     var t0 = performance.now(); // Начало время выполнения
@@ -178,7 +178,9 @@ function commandDistributor() {
     });
 }
 
-self.addEventListener("message", event => {
-    // Принимаем данные из (html) страницы
+self.addEventListener("message", event => { // Принимаем данные из (html) страницы
+    if(event.data == true){
+    setInterval(commandDistributor, 20000); // Запуск функции на с интервалом 20 сек.
     console.log("Принимаем данные из (html) страницы  ", event.data);
+    }
 });
