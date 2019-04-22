@@ -95,11 +95,11 @@ function connection() {
         });
 }
 
-function compareCache(data, url) {
-    return caches.match(url).then(function (response) {
-        return response.json().then(function (res) {
-            console.log("Кэш ", res);
-            console.log("Сеть ", data);
+function compareCache(fetchdata, cacheurl) {
+    return caches.match(cacheurl).then(function (response) {
+        return response.json().then(function (cachedata) {
+            console.log("Кэш ", cachedata);
+            console.log("Сеть ", fetchdata);
             var fetchArr = [
                 [
                     [],
@@ -112,7 +112,7 @@ function compareCache(data, url) {
                     []
                 ]
             ];
-            var arr = [res, data];
+            var arr = [fetchdata, cachedata];
 
             for (var i = 0; i < arr.length; i++) {
                 objArr(arr[i], i);
@@ -179,9 +179,9 @@ function commandDistributor() {
 }
 
 self.addEventListener("message", event => { // Принимаем данные из (html) страницы
-    if(event.data == true){
-    console.log("Принимаем данные из (html) страницы  ", event.data);
+    if (event.data == true) {
+        console.log("Принимаем данные из (html) страницы  ", event.data);
     } else {
-    console.log("Принимаем данные из (html) страницы  ", event.data);
+        console.log("Принимаем данные из (html) страницы  ", event.data);
     }
 });
