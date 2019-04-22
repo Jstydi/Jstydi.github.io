@@ -67,6 +67,7 @@ self.addEventListener("fetch", event => {
 
 function connection() {
     var url = "https://jstydi.github.io/file-version.json";
+    var connectresults = {};
     return fetch(url, {
             cache: "no-cache"
         }) // Запрос на сервер для получения новых данных
@@ -76,8 +77,8 @@ function connection() {
                 console.log(
                     "Похоже, возникла проблема. Код состояния: " + response.status
                 );
-                var connect = false;
-                return connect;
+                connectresults.connect = false;
+                return connectresults;
             };
             return response.json().then(function (data) {
                 //console.log('Получены данные из сервера ', data);
@@ -90,8 +91,8 @@ function connection() {
         })
         .catch(function (err) {
             console.log("Ошибка запроса :", err);
-            var connect = false;
-            return connect;
+            connectresults.connect = false;
+            return connectresults;
         });
 }
 
@@ -159,8 +160,8 @@ setInterval(commandDistributor, 20000); // Запуск функции на с �
 function commandDistributor() {
     var t0 = performance.now(); // Начало время выполнения
     connection().then(connectresults => {
-        if (connectresults == false) {
-            //console.log('Сеть недоступна ',connectresults);
+        if (connectresults.connect == false) {
+            console.log('Сеть недоступна ',connectresults);
         } else {
             console.log("Полученные данные ", connectresults);
             var t1 = performance.now(); // Конец времени выполнения
