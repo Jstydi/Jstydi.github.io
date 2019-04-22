@@ -182,6 +182,7 @@ self.addEventListener("message", event => { // Принимаем данные �
     if(event.data == true){
     setInterval(commandDistributor, 20000); // Запуск функции на с интервалом 20 сек.
     console.log("Принимаем данные из (html) страницы  ", event.data);
-    }
+    } else {
     console.log("Принимаем данные из (html) страницы  ", event.data);
+    }
 });
