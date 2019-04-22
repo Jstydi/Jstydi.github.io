@@ -30,6 +30,7 @@
     
     <script>
     if (navigator.serviceWorker.controller) { // Проверка на контроль страницы serviceWorker-ом
+        navigator.serviceWorker.controller.postMessage(true); // Отправляем данные из html в service - worcer
         console.log("Страница контролируется serviceWorker");
     } else {
         serviceWorker();
