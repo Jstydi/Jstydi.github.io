@@ -36,7 +36,7 @@
             scope: '/'
           }).then(function (registration) {
             if(update == true){
-                registration.update();
+                //registration.update();
                 registration.addEventListener('updatefound', function () { // Событие обновления sw
                 var installingWorker = registration.installing;
                 console.log('ServiceWorker был обновлен ', installingWorker)
