@@ -174,12 +174,14 @@ function commandDistributor() {
     });
 
     self.clients.matchAll().then(clients => {
+        if (clients && clients.length) {
         // Отправляем данные на (html) страницу
         const client = clients[0];
         var message = {
             "Из service-worcer в": "html"
         };
         client.postMessage(message);
+        }
     });
 }
 
