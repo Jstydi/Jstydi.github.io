@@ -166,8 +166,8 @@ function commandDistributor() {
     connection().then(connectresults => {
         if (connectresults.connect == false) {
             console.log('Сеть недоступна ', connectresults);
-        } else if (connectresults['service_worker.js'] == true) {
-            console.log("Полученные данные ", connectresults['service_worker.js']);
+        } else if (connectresults['service-worker.js'] == true) {
+            console.log("Полученные данные ", connectresults['service-worker.js']);
         } else if (connectresults['index.html'] == true) {
             console.log("Полученные данные ", connectresults['index.html']);
         } else if (connectresults['content.json'] == true) {
