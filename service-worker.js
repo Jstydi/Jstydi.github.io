@@ -61,6 +61,7 @@ self.addEventListener("fetch", event => {
         
         caches.match(event.request).then(function (response) { // Все требуемые ресурсы беруться из кэш
         if(event.request.url == 'https://jstydi.github.io/'){console.log('перехват test')}
+         return response;
         }) 
     )
 });
