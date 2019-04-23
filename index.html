@@ -77,6 +77,7 @@
     // -------------------------------------------------------------------------------- // 
     if ('serviceWorker' in navigator) { // Регестрация serviceWorker
         setInterval(function(){
+            console.log("Обновление !!!")
         window.addEventListener('load', function () {
         
           navigator.serviceWorker.register('/service-worker.js', {
