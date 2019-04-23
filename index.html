@@ -75,30 +75,20 @@
       }
     
     // -------------------------------------------------------------------------------- // 
-    if ('serviceWorker' in navigator) { // Регестрация serviceWorker
-        console.log("Потдерживается")
-        setInterval(function(){
-            console.log("Обновление !!!")
-        window.addEventListener('load', function () {
-        
+    setInterval(function(){
           navigator.serviceWorker.register('/service-worker.js', {
             scope: '/'
           }).then(function (registration) {
-            if(update == true){
                 registration.update();
                 registration.addEventListener('updatefound', function () { // Событие обновления sw
                 var installingWorker = registration.installing;
                 console.log('ServiceWorker был обновлен ', installingWorker)
                 })
-            }
             console.log('Регистрация serviceWorker, область видимости: ', registration.scope);
           }, function (err) {
             console.log('Ошибка регистрации serviceWorker: ', err);
           })
-        
-        })
     }, 20000);
-      }
 // -------------------------------------------------------------------------------- //
 </script>
 </body>
