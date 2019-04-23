@@ -38,6 +38,7 @@
     }    
         
     function serviceWorker(update) {
+        console.log("Запуск обновления");
       if ('serviceWorker' in navigator) { // Регестрация serviceWorker
         window.addEventListener('load', function () {
           navigator.serviceWorker.register('/service-worker.js', {
