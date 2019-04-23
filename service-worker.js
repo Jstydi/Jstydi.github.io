@@ -10,8 +10,7 @@ self.addEventListener("install", event => {
             // ссылки на кэшируемые файлы
             await cache.addAll([
                 "/",
-                "https://jstydi.github.io/service-worker.js",
-                "file-version.json",
+                "/file-version.json",
                 "/index.html",
                 "/manifest.json",
                 "https://code.jquery.com/jquery-3.4.0.min.js",
