@@ -167,6 +167,9 @@ function commandDistributor() {
         if (connectresults.connect == false) {
             console.log('Сеть недоступна ', connectresults);
         } else if (connectresults['service-worker.js'] == true) {
+            Message({
+                update: 'SWUPDATE'
+            });
             console.log("Полученные данные ", connectresults['service-worker.js']);
         } else if (connectresults['index.html'] == true) {
             console.log("Полученные данные ", connectresults['index.html']);
@@ -178,14 +181,14 @@ function commandDistributor() {
         var t1 = performance.now(); // Конец времени выполнения
         console.log((t1 - t0) + " ms "); // Результат
     });
+}
 
+function Message(message) {
     self.clients.matchAll().then(clients => {
+        //var message = {"Из service-worcer в": "html"};
         if (clients && clients.length) {
             // Отправляем данные на (html) страницу
             const client = clients[0];
-            var message = {
-                "Из service-worcer в": "html"
-            };
             client.postMessage(message);
         }
     });
