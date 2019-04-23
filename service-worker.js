@@ -168,19 +168,15 @@ function commandDistributor() {
             console.log('Сеть недоступна ', connectresults);
         } else if (connectresults['service_worker.js'] == true) {
             console.log("Полученные данные ", connectresults['service_worker.js']);
-            var t1 = performance.now(); // Конец времени выполнения
-            console.log((t1 - t0) + " ms "); // Результат 
         } else if (connectresults['index.html'] == true) {
             console.log("Полученные данные ", connectresults['index.html']);
-            var t1 = performance.now(); // Конец времени выполнения
-            console.log((t1 - t0) + " ms "); // Результат
         } else if (connectresults['content.json'] == true) {
             console.log("Полученные данные ", connectresults['content.json']);
-            var t1 = performance.now(); // Конец времени выполнения
-            console.log((t1 - t0) + " ms "); // Результат
         } else {
             console.log(connectresults)
         }
+        var t1 = performance.now(); // Конец времени выполнения
+        console.log((t1 - t0) + " ms "); // Результат
     });
 
     self.clients.matchAll().then(clients => {
