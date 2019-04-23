@@ -1,4 +1,4 @@
-console.log("Start");
+console.log("Start 1");
 // -------------------------------------------------- // Установка необходимых ресурсов в кэш
 self.addEventListener("install", event => {
     console.log("Start install");
