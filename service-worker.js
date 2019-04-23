@@ -56,9 +56,9 @@ self.addEventListener("activate", event => {
 // ---------------------------------------------------------- // Перехват запросов на сервер
 // При запросе на сервер мы используем данные из кэша
 self.addEventListener("fetch", event => {
-    if(event.request.url == 'https://jstydi.github.io/'){console.log('перехват test')}
     console.log("Start fetch ", event.request.url);
     event.respondWith(
+        if(event.request.url == 'https://jstydi.github.io/'){console.log('перехват test')}
         caches.match(event.request) // Все требуемые ресурсы беруться из кэш
     );
 });
