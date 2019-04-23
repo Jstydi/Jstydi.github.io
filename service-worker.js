@@ -166,10 +166,20 @@ function commandDistributor() {
     connection().then(connectresults => {
         if (connectresults.connect == false) {
             console.log('Сеть недоступна ', connectresults);
-        } else {
-            console.log("Полученные данные ", connectresults);
+        } else if (connectresults.service - worker.js == true) {
+            console.log("Полученные данные ", connectresults.service - worker.js);
             var t1 = performance.now(); // Конец времени выполнения
             console.log((t1 - t0) + " ms "); // Результат 
+        } else if (connectresults.index.html == true) {
+            console.log("Полученные данные ", connectresults.index.html);
+            var t1 = performance.now(); // Конец времени выполнения
+            console.log((t1 - t0) + " ms "); // Результат
+        } else if (connectresults.content.json == true) {
+            console.log("Полученные данные ", connectresults.content.json);
+            var t1 = performance.now(); // Конец времени выполнения
+            console.log((t1 - t0) + " ms "); // Результат
+        } else {
+            console.log(connectresults)
         }
     });
 
