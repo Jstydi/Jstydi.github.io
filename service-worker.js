@@ -171,7 +171,9 @@ function commandDistributor() {
             var t1 = performance.now(); // Конец времени выполнения
             console.log((t1 - t0) + " ms "); // Результат 
         }
-    });
+    }).then(connectresults => {
+        console.log('Test 2 then ', connectresults)
+    })
 
     self.clients.matchAll().then(clients => {
         if (clients && clients.length) {
