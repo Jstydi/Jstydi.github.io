@@ -180,9 +180,10 @@ function commandDistributor() {
 }
 
 self.addEventListener("message", event => { // Принимаем данные из (html) страницы
-    if (event.data == true) {
-        console.log("Принимаем данные из (html) страницы  ", event.data);
+    var htmlMessage = event.data;
+    if (htmlMessage == true) {
+        console.log("Принимаем данные из (html) страницы, под контролем sw ", htmlMessage);
     } else {
-        console.log("Принимаем данные из (html) страницы  ", event.data);
+        console.log("Принимаем данные из (html) страницы  ", htmlMessage);
     }
 });
