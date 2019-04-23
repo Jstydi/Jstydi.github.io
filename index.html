@@ -61,7 +61,7 @@
       navigator.serviceWorker.onmessage = function (event) { // Принимаем данные из service-worcer
         let message = event.data;
         if (message.update == 'SWUPDATE'){
-            //serviceWorker(true);
+            serviceWorker(true);
             console.log(message)
         } else if (message == 'CONTENTUPDATE'){
         
