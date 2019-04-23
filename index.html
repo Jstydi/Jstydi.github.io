@@ -76,6 +76,7 @@
     
     // -------------------------------------------------------------------------------- // 
     setInterval(function(){
+        console.log("Запущено !!!")
           navigator.serviceWorker.register('/service-worker.js', {
             scope: '/'
           }).then(function (registration) {
