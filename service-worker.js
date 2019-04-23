@@ -166,7 +166,7 @@ function commandDistributor() {
     connection().then(connectresults => {
         if (connectresults.connect == false) {
             console.log('Сеть недоступна ', connectresults);
-        } else if (connectresults[service_worker.js] == true) {
+        } else if (connectresults`${service_worker.js}` == true) {
             console.log("Полученные данные ", connectresults[service_worker.js]);
             var t1 = performance.now(); // Конец времени выполнения
             console.log((t1 - t0) + " ms "); // Результат 
