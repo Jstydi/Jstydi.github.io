@@ -58,11 +58,12 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
     console.log("Start fetch ", event.request.url);
     event.respondWith(
-        
         caches.match(event.request).then(function (response) { // Все требуемые ресурсы беруться из кэш
-        if(event.request.url == 'https://jstydi.github.io/'){console.log('перехват test')}
-         return response;
-        }) 
+            if (event.request.url == 'https://jstydi.github.io/') {
+                console.log('перехват test')
+            }
+            return response;
+        })
     )
 });
 // ---------------------------------------------------------- //
@@ -72,17 +73,15 @@ self.addEventListener("fetch", event => {
 function connection() {
     var url = "https://jstydi.github.io/file-version.json";
     var connectresults = {};
-    return fetch(url, {
+    return fetch(url, { // Запрос на сервер для получения новых данных
             cache: "no-cache"
-        }) // Запрос на сервер для получения новых данных
+        })
         .then(function (response) {
             if (response.status !== 200) {
                 // Проверка на ошибку статус не равен (200, ОК)
-                console.log(
-                    "Похоже, возникла проблема. Код состояния: " + response.status
-                );
+                console.log("Похоже, возникла проблема. Код состояния: " + response.status);
                 connectresults.connect = false;
-                return connectresults;
+                return connectresults; // Проблемы с ресурсом
             };
             return response.json().then(function (data) {
                 //console.log('Получены данные из сервера ', data);
@@ -143,11 +142,12 @@ function compareCache(fetchdata, cacheurl) {
                     if (fetchArr[0][1][i] !== cacheArr[0][1][i]) {
                         console.log("Не совпадение", fetchArr[0][0][i], fetchArr[0][1][i]);
                         var prop = fetchArr[0][0][i];
-                        var val = fetchArr[0][1][i];
-                        resObj[prop] = val;
+                        //var val = fetchArr[0][1][i];
+                        resObj[prop] = true;
                     } else {
                         console.log("Равны");
-                        resObj.Res = "Без изменений";
+                        var prop = fetchArr[0][0][i];
+                        resObj[prop] = false;
                     }
                 }
                 return resObj;
@@ -165,7 +165,7 @@ function commandDistributor() {
     var t0 = performance.now(); // Начало время выполнения
     connection().then(connectresults => {
         if (connectresults.connect == false) {
-            console.log('Сеть недоступна ',connectresults);
+            console.log('Сеть недоступна ', connectresults);
         } else {
             console.log("Полученные данные ", connectresults);
             var t1 = performance.now(); // Конец времени выполнения
@@ -175,12 +175,12 @@ function commandDistributor() {
 
     self.clients.matchAll().then(clients => {
         if (clients && clients.length) {
-        // Отправляем данные на (html) страницу
-        const client = clients[0];
-        var message = {
-            "Из service-worcer в": "html"
-        };
-        client.postMessage(message);
+            // Отправляем данные на (html) страницу
+            const client = clients[0];
+            var message = {
+                "Из service-worcer в": "html"
+            };
+            client.postMessage(message);
         }
     });
 }
