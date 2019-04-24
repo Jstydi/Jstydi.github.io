@@ -46,6 +46,7 @@
     function serviceWorker() {
       if ('serviceWorker' in navigator) { // Регестрация serviceWorker
         window.addEventListener('load', function () {
+          console.log("Load !!!!");
           navigator.serviceWorker.register('/service-worker.js', {
               scope: '/'
             })
