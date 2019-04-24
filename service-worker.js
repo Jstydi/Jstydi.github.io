@@ -102,7 +102,7 @@ function connection() {
 function compareCache(fetchdata, cacheurl) {
     return caches.match(cacheurl).then(function (response) {
         return response.json().then(function (cachedata) {
-            console.log(caches)
+            console.log(caches.put())
             console.log("Кэш ", cachedata);
             console.log("Сеть ", fetchdata);
             var fetchArr = [
