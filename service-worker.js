@@ -166,6 +166,7 @@ function compareCache(fetchdata, cacheurl, respClone) {
                 }
             }
             console.log(returnCompare);
+            returnCompare.connect = true;
             return returnCompare;
         });
     });
