@@ -150,7 +150,7 @@ function compareCache(fetchdata, cacheurl, respClone) {
                         resObj[prop] = false;
                     }
                 }
-                return resObj.connect = true;
+                return resObj
             }
             var returnCompare = comparisonResult(fetchArr, cacheArr);
             for (var key in returnCompare) {
