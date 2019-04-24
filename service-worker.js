@@ -90,7 +90,7 @@ function connection() {
                 //console.log(res)
                 //})
                 caches.open("Jstydi_app-v1").then(function(cache) {
-                return cache.put(response.url, response);
+                return cache.put(response.url, response.clone);
               });
                 return compareCache(data, response.url);
             });
