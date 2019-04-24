@@ -179,7 +179,11 @@ function commandDistributor() {
     connection().then(connectresults => {
         if (connectresults.connect == false) {
             console.log('Сеть недоступна ', connectresults);
-        } else if (connectresults['service-worker.js'] == true) {
+        } else {
+            console.log('Сеть доступна ', connectresults);
+        }
+
+        if (connectresults['service-worker.js'] == true) {
             Message({
                 update: 'SWUPDATE'
             });
