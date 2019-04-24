@@ -77,7 +77,7 @@ function connection() {
             cache: "no-cache"
         })
         .then(function (response) {
-            var respClone = response.clone(); 
+            var respClone = response.clone();
             if (response.status !== 200) {
                 // Проверка на ошибку статус не равен (200, ОК)
                 console.log("Похоже, возникла проблема. Код состояния: " + response.status);
@@ -101,7 +101,7 @@ function connection() {
 
 function compareCache(fetchdata, cacheurl, respClone) {
     return caches.match(cacheurl).then(function (response) {
-        return response.json().then(function (cachedata) { 
+        return response.json().then(function (cachedata) {
             console.log("Кэш ", cachedata);
             console.log("Сеть ", fetchdata);
             var fetchArr = [
@@ -137,7 +137,7 @@ function compareCache(fetchdata, cacheurl, respClone) {
             }
 
             function comparisonResult(fetchArr, cacheArr) {
-                var resObj = {};
+                var resObj = {connect: true};
                 for (var i = 0; i < fetchArr[0][1].length; i++) {
                     if (fetchArr[0][1][i] !== cacheArr[0][1][i]) {
                         console.log("Не совпадение", fetchArr[0][0][i], fetchArr[0][1][i]);
@@ -153,15 +153,17 @@ function compareCache(fetchdata, cacheurl, respClone) {
                 return resObj;
             }
             var returnCompare = comparisonResult(fetchArr, cacheArr);
-            for(var key in returnCompare){
-                console.log(key," : ", returnCompare[key])
-                if(returnCompare[key] == true){
+            for (var key in returnCompare) {
+                console.log(key, " : ", returnCompare[key])
+                if (returnCompare[key] == true) {
                     console.log("Есть true")
-                    caches.open('Jstydi_app-v1').then(function(cache) {
+                    caches.open('Jstydi_app-v1').then(function (cache) {
                         cache.put(cacheurl, respClone);
-                      });  
+                    });
                     return
-                } else {console.log("Все false")}
+                } else {
+                    console.log("false")
+                }
             }
             console.log(returnCompare);
             return returnCompare;
