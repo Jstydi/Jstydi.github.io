@@ -156,7 +156,6 @@ function compareCache(fetchdata, cacheurl, respClone) {
             for (var key in returnCompare) {
                 console.log(key, " : ", returnCompare[key])
                 if (returnCompare[key] == true) {
-                    console.log("Есть true")
                     caches.open('Jstydi_app-v1').then(function (cache) {
                         cache.put(cacheurl, respClone);
                     });
