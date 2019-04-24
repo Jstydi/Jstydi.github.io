@@ -77,6 +77,7 @@ function connection() {
             cache: "no-cache"
         })
         .then(function (response) {
+            console.log(response.clone())
             if (response.status !== 200) {
                 // Проверка на ошибку статус не равен (200, ОК)
                 console.log("Похоже, возникла проблема. Код состояния: " + response.status);
@@ -85,11 +86,9 @@ function connection() {
             };
             return response.json().then(function (data) {
                 //console.log('Получены данные из сервера ', data);
-
                 //compareCache(data, response.url).then(function(res) {
                 //console.log(res)
                 //})
-                console.log(response.clone())
                 return compareCache(data, response.url);
             });
         })
