@@ -177,7 +177,7 @@ setInterval(commandDistributor, 20000); // Запуск функции на с �
 function commandDistributor() {
     var t0 = performance.now(); // Начало время выполнения
     connection().then(connectresults => {
-        if (connectresults.connect == false) {
+        if (connectresults['connect'] == false) {
             console.log('Сеть недоступна ', connectresults);
         } else {
             console.log('Сеть доступна ', connectresults);
