@@ -101,12 +101,7 @@ function connection() {
 
 function compareCache(fetchdata, cacheurl, respClone) {
     return caches.match(cacheurl).then(function (response) {
-        return response.json().then(function (cachedata) {
-            console.log(cacheurl,' cacheurl ',respClone)
-            caches.open('Jstydi_app-v1').then(function(cache) {
-                cache.put(cacheurl, respClone);
-              });  
-            
+        return response.json().then(function (cachedata) { 
             console.log("Кэш ", cachedata);
             console.log("Сеть ", fetchdata);
             var fetchArr = [
@@ -162,6 +157,9 @@ function compareCache(fetchdata, cacheurl, respClone) {
                 console.log(key," : ", returnCompare[key])
                 if(returnCompare[key] == true){
                     console.log("Есть true")
+                    caches.open('Jstydi_app-v1').then(function(cache) {
+                        cache.put(cacheurl, respClone);
+                      });  
                     return
                 } else {console.log("Все false")}
             }
