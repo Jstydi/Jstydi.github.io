@@ -89,7 +89,7 @@ function connection() {
                 //compareCache(data, response.url).then(function(res) {
                 //console.log(res)
                 //})
-                return compareCache(data, response.url, response.clone());
+                return compareCache(data, response.url, response);
             });
         })
         .catch(function (err) {
@@ -100,12 +100,11 @@ function connection() {
 }
 
 function compareCache(fetchdata, cacheurl, response) {
-    console.log(response)
-    //caches.open("Jstydi_app-v1").then(function(cache) {
-                //return cache.put(response.url, response.clone());
-              //});
     return caches.match(cacheurl).then(function (response) {
         return response.json().then(function (cachedata) {
+            caches.open("Jstydi_app-v1").then(function(cache) {
+                return cache.put(response.url, response.clone());
+              });
             console.log("Кэш ", cachedata);
             console.log("Сеть ", fetchdata);
             var fetchArr = [
