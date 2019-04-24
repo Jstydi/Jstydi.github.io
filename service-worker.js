@@ -137,7 +137,7 @@ function compareCache(fetchdata, cacheurl, respClone) {
             }
 
             function comparisonResult(fetchArr, cacheArr) {
-                var resObj = {connect: true};
+                var resObj = {};
                 for (var i = 0; i < fetchArr[0][1].length; i++) {
                     if (fetchArr[0][1][i] !== cacheArr[0][1][i]) {
                         console.log("Не совпадение", fetchArr[0][0][i], fetchArr[0][1][i]);
@@ -166,7 +166,7 @@ function compareCache(fetchdata, cacheurl, respClone) {
                 }
             }
             console.log(returnCompare);
-            return returnCompare;
+            return returnCompare.connect = true;
         });
     });
 }
