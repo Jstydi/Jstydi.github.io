@@ -101,7 +101,6 @@ function connection() {
 
 function compareCache(fetchdata, cacheurl) {
     return caches.match(cacheurl).then(function (response) {
-        cache.put(cacheurl, response);
         console.log('cache !!!')
         return response.json().then(function (cachedata) {
             console.log("Кэш ", cachedata);
