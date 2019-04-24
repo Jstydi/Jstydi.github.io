@@ -77,7 +77,7 @@ function connection() {
             cache: "no-cache"
         })
         .then(function (response) {
-            console.log(response.clone())
+            var respClone = response.clone(); 
             if (response.status !== 200) {
                 // Проверка на ошибку статус не равен (200, ОК)
                 console.log("Похоже, возникла проблема. Код состояния: " + response.status);
@@ -89,6 +89,7 @@ function connection() {
                 //compareCache(data, response.url).then(function(res) {
                 //console.log(res)
                 //})
+                console.log(respClone)
                 return compareCache(data, response.url);
             });
         })
