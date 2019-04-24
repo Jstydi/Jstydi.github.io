@@ -89,7 +89,7 @@ function connection() {
                 //compareCache(data, response.url).then(function(res) {
                 //console.log(res)
                 //})
-                return compareCache(data, response.url);
+                return compareCache(data, response.url, respClone);
             });
         })
         .catch(function (err) {
@@ -99,7 +99,7 @@ function connection() {
         });
 }
 
-function compareCache(fetchdata, cacheurl) {
+function compareCache(fetchdata, cacheurl, respClone) {
     return caches.match(cacheurl).then(function (response) {
         return response.json().then(function (cachedata) {
             console.log(respClone)
