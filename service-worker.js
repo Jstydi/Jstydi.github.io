@@ -103,7 +103,9 @@ function compareCache(fetchdata, cacheurl, respClone) {
     return caches.match(cacheurl).then(function (response) {
         return response.json().then(function (cachedata) {
             console.log(cacheurl,' cacheurl ',respClone)
-            cache.put(cacheurl, respClone);
+            caches.open('Jstydi_app-v1').then(function(cache) {
+                cache.put(cacheurl, respClone);
+              });  
             
             console.log("Кэш ", cachedata);
             console.log("Сеть ", fetchdata);
