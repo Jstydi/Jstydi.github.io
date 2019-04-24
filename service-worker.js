@@ -89,7 +89,6 @@ function connection() {
                 //compareCache(data, response.url).then(function(res) {
                 //console.log(res)
                 //})
-                console.log(respClone)
                 return compareCache(data, response.url);
             });
         })
@@ -103,6 +102,7 @@ function connection() {
 function compareCache(fetchdata, cacheurl) {
     return caches.match(cacheurl).then(function (response) {
         return response.json().then(function (cachedata) {
+            console.log(respClone)
             console.log("Кэш ", cachedata);
             console.log("Сеть ", fetchdata);
             var fetchArr = [
