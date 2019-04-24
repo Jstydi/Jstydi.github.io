@@ -101,9 +101,8 @@ function connection() {
 
 function compareCache(fetchdata, cacheurl) {
     return caches.match(cacheurl).then(function (response) {
-        cache.put('/test', response);
-        console.log(response);
         return response.json().then(function (cachedata) {
+            console.log(response);
             console.log("Кэш ", cachedata);
             console.log("Сеть ", fetchdata);
             var fetchArr = [
