@@ -89,10 +89,7 @@ function connection() {
                 //compareCache(data, response.url).then(function(res) {
                 //console.log(res)
                 //})
-                caches.open("Jstydi_app-v1").then(function(cache) {
-                return cache.put(response.url, response.clone());
-              });
-                return compareCache(data, response.url);
+                return compareCache(data, response.url, response);
             });
         })
         .catch(function (err) {
@@ -102,7 +99,10 @@ function connection() {
         });
 }
 
-function compareCache(fetchdata, cacheurl) {
+function compareCache(fetchdata, cacheurl, response) {
+    caches.open("Jstydi_app-v1").then(function(cache) {
+                return cache.put(response.url, response.clone());
+              });
     return caches.match(cacheurl).then(function (response) {
         return response.json().then(function (cachedata) {
             console.log("Кэш ", cachedata);
