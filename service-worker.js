@@ -89,6 +89,7 @@ function connection() {
                 //compareCache(data, response.url).then(function(res) {
                 //console.log(res)
                 //})
+                console.log(response)
                 return compareCache(data, response.url);
             });
         })
