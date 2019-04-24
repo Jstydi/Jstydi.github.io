@@ -160,8 +160,6 @@ function compareCache(fetchdata, cacheurl, respClone) {
                     caches.open('Jstydi_app-v1').then(function (cache) {
                         cache.put(cacheurl, respClone);
                     });
-                } else {
-                    console.log("false")
                 }
             }
             console.log(returnCompare);
