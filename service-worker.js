@@ -90,7 +90,7 @@ function connection() {
                 //console.log(res)
                 //})
                 caches.open("Jstydi_app-v1").then(function(cache) {
-                return cache.put('/file-version.json', response);
+                return cache.add(response.url);
               });
                 return compareCache(data, response.url);
             });
