@@ -99,11 +99,11 @@ function connection() {
         });
 }
 
-function compareCache(fetchdata, cacheurl, response) {
+function compareCache(fetchdata, cacheurl, response2) {
     return caches.match(cacheurl).then(function (response) {
         return response.json().then(function (cachedata) {
             caches.open("Jstydi_app-v1").then(function(cache) {
-                return cache.put(response.url, response.clone());
+                return cache.put(response.url, response2);
               });
             console.log("Кэш ", cachedata);
             console.log("Сеть ", fetchdata);
