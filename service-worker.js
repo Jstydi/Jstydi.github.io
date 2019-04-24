@@ -158,6 +158,13 @@ function compareCache(fetchdata, cacheurl, respClone) {
                 return resObj;
             }
             var returnCompare = comparisonResult(fetchArr, cacheArr);
+            for(var key in returnCompare){
+                console.log(key," : ", returnCompare[key])
+                if(returnCompare[key] == true){
+                    console.log("Есть true")
+                    return
+                } else {console.log("Все false")}
+            }
             console.log(returnCompare);
             return returnCompare;
         });
