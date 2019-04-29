@@ -215,3 +215,20 @@ self.addEventListener("message", event => { // Принимаем данные �
         console.log("Принимаем данные из (html) страницы  ", htmlMessage);
     }
 });
+var url = "https://jstydi.github.io/content.json"
+    function f(url){
+      fetch(url)
+      .then(function(response) {
+        if (response.status !== 200) {
+        console.log('Ошибка запроса : ' +response.status);
+        return;
+      }
+      response.json().then(function(data) {
+      console.log(data);
+      });
+    })
+      .catch(function(err) {
+      console.log('Ошибка запроса :', err);
+    });
+    }
+    f(url);
