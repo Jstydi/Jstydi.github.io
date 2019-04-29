@@ -193,6 +193,7 @@ function commandDistributor() {
         }
         var t1 = performance.now(); // Конец времени выполнения
         console.log((t1 - t0) + " ms "); // Результат
+        f(url);
     });
 }
 
@@ -231,4 +232,4 @@ var url = "https://jstydi.github.io/content.json"
       console.log('Ошибка запроса :', err);
     });
     }
-    f(url);
+  
