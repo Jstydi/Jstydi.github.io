@@ -1,1 +1,8 @@
-{"Content":"div5"}
+{
+      [`${el()}`]: {
+          how_tag: 1,
+          addWhere: 'body',
+          tag: 'div',
+          class: 'teg class 1',
+          text: 'Text 1'
+      },
