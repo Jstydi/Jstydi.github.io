@@ -188,12 +188,14 @@ function commandDistributor() {
             console.log("Полученные данные ", connectresults['index.html']);
         } else if (connectresults['content.json'] == true) {
             console.log("Полученные данные ", connectresults['content.json']);
+            fetchContent().then(data => {
+                console.log(data)
+            });
         } else {
             console.log(connectresults)
         }
         var t1 = performance.now(); // Конец времени выполнения
         console.log((t1 - t0) + " ms "); // Результат
-        f(url);
     });
 }
 
@@ -216,20 +218,20 @@ self.addEventListener("message", event => { // Принимаем данные �
         console.log("Принимаем данные из (html) страницы  ", htmlMessage);
     }
 });
-var url = "https://jstydi.github.io/content.json"
-    function f(url){
-      fetch(url)
-      .then(function(response) {
-        if (response.status !== 200) {
-        console.log('Ошибка запроса : ' +response.status);
-        return;
-      }
-      response.json().then(function(data) {
-      console.log(data);
-      });
-    })
-      .catch(function(err) {
-      console.log('Ошибка запроса :', err);
-    });
-    }
-  
+
+function fetchContent() {
+    var url = "https://jstydi.github.io/content.json"
+    fetch(url)
+        .then(function (response) {
+            if (response.status !== 200) {
+                console.log('Ошибка запроса : ' + response.status);
+                return;
+            }
+            return response.json().then(function (data) {
+                //console.log(data);
+            });
+        })
+        .catch(function (err) {
+            console.log('Ошибка запроса :', err);
+        });
+}
