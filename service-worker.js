@@ -221,7 +221,7 @@ self.addEventListener("message", event => { // Принимаем данные �
 
 function fetchContent() {
     var url = "https://jstydi.github.io/content.json"
-    fetch(url)
+   return fetch(url)
         .then(function (response) {
             if (response.status !== 200) {
                 console.log('Ошибка запроса : ' + response.status);
@@ -229,6 +229,7 @@ function fetchContent() {
             }
             return response.json().then(function (data) {
                 //console.log(data);
+                return data;
             });
         })
         .catch(function (err) {
