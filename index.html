@@ -35,6 +35,7 @@
   </div>
 
   <script>
+    // -------------------------------------------------------------------------------- //
     if (navigator.serviceWorker.controller) { // Проверка на контроль страницы serviceWorker-ом
       navigator.serviceWorker.controller.postMessage(true); // Отправляем данные из html в service - worcer
       console.log("Страница контролируется serviceWorker");
@@ -42,7 +43,9 @@
       serviceWorker();
       console.log("Страница не контролируется serviceWorker");
     }
+    // -------------------------------------------------------------------------------- //
 
+    // -------------------------------------------------------------------------------- //
     function serviceWorker() {
       if ('serviceWorker' in navigator) { // Регестрация serviceWorker
         window.addEventListener('load', function () {
@@ -58,7 +61,9 @@
         });
       }
     }
+    // -------------------------------------------------------------------------------- //
 
+    // -------------------------------------------------------------------------------- //
     function swUpdate() {
       console.log("Запущено !!!")
       navigator.serviceWorker.register('/service-worker.js', {
@@ -74,6 +79,21 @@
         console.log('Ошибка регистрации serviceWorker: ', err);
       })
     }
+    // -------------------------------------------------------------------------------- //
+
+    // -------------------------------------------------------------------------------- //
+    function ContentRender(content) {
+      var caunt = 0;
+      function el() {
+      caunt++;
+      return 'element '+`${caunt}`;
+    }
+    var obj = content;
+    console.log(obj);
+    }
+
+
+    // -------------------------------------------------------------------------------- //
 
     // -------------------------------------------------------------------------------- //
     navigator.serviceWorker.onmessage = function (event) { // Принимаем данные из service-worcer
@@ -81,8 +101,8 @@
       if (message.update == 'SWUPDATE') {
         swUpdate()
         console.log(message)
-      } else if (message == 'CONTENTUPDATE') {
-
+      } else if (message.update == 'CONTENTUPDATE') {
+        ContentRender(message);
       }
       console.log('Принял данные из service-worcer ', message);
 
@@ -93,4 +113,5 @@
     // -------------------------------------------------------------------------------- //
   </script>
 </body>
+
 </html>
