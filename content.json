@@ -1,5 +1,5 @@
 {
-      "[`${el()}`]": {
+      [`${el()}`]: {
           "how_tag": 1,
           "addWhere": "body",
           "tag": "div",
