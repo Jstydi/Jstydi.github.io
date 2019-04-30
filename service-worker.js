@@ -190,6 +190,7 @@ function commandDistributor() {
             console.log("Полученные данные ", connectresults['content.json']);
             fetchContent().then(data => {
                 data.update = 'CONTENTUPDATE';
+                Message(data)
                 console.log(data)
             });
         } else {
