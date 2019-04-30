@@ -88,10 +88,12 @@
       caunt++;
       return 'element '+`${caunt}`;
     }
-    var obj = {content};
-    console.log(obj.content);
+    var obj = {};
+    for(var key in content){
+    obj[key] = content[key]
     }
-
+    console.log(obj);
+    }
 
     // -------------------------------------------------------------------------------- //
 
