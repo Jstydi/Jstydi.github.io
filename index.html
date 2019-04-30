@@ -83,16 +83,7 @@
 
     // -------------------------------------------------------------------------------- //
     function ContentRender(content) {
-      var caunt = 0;
-      function el() {
-      caunt++;
-      return 'element '+`${caunt}`;
-    }
-    var obj = {};
-    for(var key in content){
-    obj[key] = content[key]
-    }
-    console.log(obj[`${el()}`]);
+      console.log(content)
     }
 
     // -------------------------------------------------------------------------------- //
