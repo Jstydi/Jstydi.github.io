@@ -189,6 +189,7 @@ function commandDistributor() {
         } else if (connectresults['content.json'] == true) {
             console.log("Полученные данные ", connectresults['content.json']);
             fetchContent().then(data => {
+                data.update = 'CONTENTUPDATE';
                 console.log(data)
             });
         } else {
