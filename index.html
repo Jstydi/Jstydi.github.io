@@ -83,7 +83,31 @@
 
     // -------------------------------------------------------------------------------- //
     function ContentRender(content) {
-      console.log(content)
+      delete content.update;
+      console.log(content);
+      for (var key in content) {
+        ready(content[key])
+      }
+
+      function ready(obj) {
+        for (var i = 0; i < obj.how_tag; i++) {
+          var res = {};
+          for (var key in obj) {
+            if ((key == 'how_tag' || key == 'addWhere' || key == 'tag') == false) {
+              res[key] = obj[key];
+            }
+          }
+          if (obj.how_tag > 1) {
+            res.class = res.class + `_${i+1}`
+          }
+          templ(res, obj.addWhere, obj.tag);
+        }
+      }
+
+      function templ(res, addWhere, tag) {
+        console.log(res, addWhere, tag)
+        $(`${addWhere}`).append($(`<${tag}>`, res));
+      }
     }
 
     // -------------------------------------------------------------------------------- //
