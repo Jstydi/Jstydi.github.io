@@ -1,5 +1,5 @@
 {
   "service-worker.js" : "0.1",
   "index.html" : "0.1",
-  "content.json" : "0.1"
+  "content.json" : "0.2"
 }
